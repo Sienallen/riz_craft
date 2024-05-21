@@ -1,0 +1,42 @@
+.announcement {
+  background-color: #fcc89b;
+  width: 100%;
+  text-align: center;
+  font-size: 0.7rem;
+  padding: 0.3rem;
+  margin: auto;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ff5fa2;
+  color: #fcc89b;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+}
+
+nav ul li {
+  list-style-type: none;
+  padding: 1rem;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fcc89b;
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon {
+  fill: #fcc89b;
+}
