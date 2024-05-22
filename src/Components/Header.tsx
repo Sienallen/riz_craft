@@ -1,8 +1,6 @@
 import React from 'react';
 import './Header.css';
-import Basket from '../assets/Basket.svg';
-import Heart from '../assets/Heart.svg';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Header = () => {
   return (
@@ -15,16 +13,16 @@ const Header = () => {
         <div>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <NavLink to="/">Home</NavLink>
             </li>
             <li>
-              <Link to="shopPage">Shop</Link>
+              <NavLink to="shopPage">Shop</NavLink>
             </li>
             <li>
-              <Link to="/">About</Link>
+              <NavLink to="/">About</NavLink>
             </li>
             <li>
-              <Link to="/">Contacts</Link>
+              <NavLink to="/">Contacts</NavLink>
             </li>
           </ul>
         </div>
@@ -32,21 +30,20 @@ const Header = () => {
         <div className="icons">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            height="40px"
+            height="40"
             viewBox="0 -960 960 960"
-            width="43px"
-            fill="#e8eaed"
+            width="40"
           >
             <path
               d="M440-501Zm0 381L313-234q-72-65-123.5-116t-85-96q-33.5-45-49-87T40-621q0-94 63-156.5T260-840q52 0 99 22t81 62q34-40 81-62t99-22q81 0 136 45.5T831-680h-85q-18-40-53-60t-73-20q-51 0-88 27.5T463-660h-46q-31-45-70.5-72.5T260-760q-57 0-98.5 39.5T120-621q0 33 14 67t50 78.5q36 44.5 98 104T440-228q26-23 61-53t56-50l9 9 19.5 19.5L605-283l9 9q-22 20-56 49.5T498-172l-58 52Zm280-160v-120H600v-80h120v-120h80v120h120v80H800v120h-80Z"
               className="icon"
             />
           </svg>
+
           <svg
             width="40"
             height="40"
             viewBox="0 0 46 47"
-            fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path

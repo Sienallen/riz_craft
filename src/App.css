@@ -1,3 +1,30 @@
 * {
   margin: 0;
+  overflow: hidden;
+}
+/*
+body {
+  background-image: linear-gradient(to bottom, #ff5fa2, #fcc89b);
+  background-attachment: fixed;
+}
+ */
+
+.gold-button {
+  background-color: #fcc89b;
+  border: none;
+  width: fit-content;
+  border-radius: 1rem;
+  color: #ff5fa2;
+  font-family: 'Karla', sans-serif;
+  font-weight: bold;
+  padding: 1rem;
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+.gold-button:hover {
+  background-color: #ff5fa2;
+  border: solid;
+  border-color: #fcc89b;
+  color: #fcc89b;
 }
