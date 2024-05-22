@@ -16,7 +16,7 @@ body {
   color: #ff5fa2;
   font-family: 'Karla', sans-serif;
   font-weight: bold;
-  padding: 1rem;
+  padding: 0.5rem;
   text-decoration: none;
   transition: 0.5s;
 }
@@ -26,4 +26,8 @@ body {
   border: solid;
   border-color: #fcc89b;
   color: #fcc89b;
+}
+
+.shop-now {
+  margin-top: 1rem;
 }

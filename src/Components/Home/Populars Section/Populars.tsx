@@ -3,6 +3,7 @@ import whiteBag from '../../../assets/White Red Bow Bag.jpg';
 import floweredBag from '../../../assets/Flowered Bag.jpg';
 import whiteTulips from '../../../assets/WhiteTulips.jpg';
 import plaidBag from '../../../assets/Red Bag.jpg';
+import './Populars.css';
 import PopCard from './PopCard';
 
 const Populars = () => {
@@ -11,7 +12,7 @@ const Populars = () => {
       name: 'White Bag',
       img: whiteBag,
       description:
-        'White bag with red bow. Comes with both a bag and a match purse.',
+        'White bag with red bow. Comes with both a bag and a matching purse.',
       path: 'whiteBag',
     },
     {
@@ -36,8 +37,8 @@ const Populars = () => {
 
   return (
     <>
-      <div>
-        <h2>What Others Love!</h2>
+      <div className="populars">
+        <h2 className="pop-title">What Others Love!</h2>
         <section className="popGrid">
           {populars.map((popular) => (
             <PopCard
