@@ -1,0 +1,6 @@
+.popGrid {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  column-gap: 2rem;
+}

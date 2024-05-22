@@ -1,3 +1,6 @@
+header {
+  overflow: hidden;
+}
 .announcement {
   background-color: #ff84b7;
   width: 100%;

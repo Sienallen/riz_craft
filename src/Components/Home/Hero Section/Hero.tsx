@@ -1,6 +1,6 @@
 import React from 'react';
 import './Hero.css';
-import CoverFlower from '../../assets/Cover_Flowers.jpg';
+import CoverFlower from '../../../assets/Cover_Flowers.jpg';
 import { Link } from 'react-router-dom';
 
 const Hero = () => {
