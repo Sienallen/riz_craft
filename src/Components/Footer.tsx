@@ -9,20 +9,20 @@ const Footer = () => {
         <div>
           <h2>Rizelle's Crafts</h2>
         </div>
-        <div>
+        <div className="site-map">
           <h4>SiteMap</h4>
           <ul>
             <li>
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/">Shop</Link>
+              <Link to="shopPage">Shop</Link>
             </li>
             <li>
-              <Link to="/">About</Link>
+              <Link to="aboutPage">About</Link>
             </li>
             <li>
-              <Link to="/">Contacts</Link>
+              <Link to="contactsPage">Contacts</Link>
             </li>
           </ul>
         </div>

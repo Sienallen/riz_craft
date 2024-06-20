@@ -1,6 +1,6 @@
 import React from 'react';
 import './PopCard.css';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 interface props {
   name: string;
@@ -18,7 +18,7 @@ const PopCard = ({ name, img, description, path }: props) => {
           <h4>{name}</h4>
           <div className="popDescript">
             <p>{description}</p>
-            <NavLink to={path} className=" gold-button view">
+            <Link to={path} className=" gold-button view">
               View
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +29,7 @@ const PopCard = ({ name, img, description, path }: props) => {
               >
                 <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
               </svg>
-            </NavLink>
+            </Link>
           </div>
         </div>
       </div>

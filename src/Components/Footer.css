@@ -1,3 +1,19 @@
 footer {
-  background-color: #fcc89b;
+  margin-top: 2rem;
+  overflow: hidden;
+  background-color: rgb(255, 95, 162, 0.6);
+  display: flex;
+  justify-content: space-evenly;
+  padding: 2.5rem;
+}
+
+footer ul li {
+  list-style: none;
+}
+
+footer ul li a,
+footer ul li p {
+  text-decoration: none;
+  color: black;
+  margin-left: -2.5rem;
 }
