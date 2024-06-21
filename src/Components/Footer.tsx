@@ -41,16 +41,36 @@ const Footer = () => {
           <h4>SiteMap</h4>
           <ul>
             <li>
-              <a>Facebook</a>
+              <a
+                href="https://www.facebook.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Facebook
+              </a>
             </li>
             <li>
-              <a>Twitter</a>
+              <a href="https://x.com" target="_blank" rel="noopener noreferrer">
+                Twitter
+              </a>
             </li>
             <li>
-              <a>YouTube</a>
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                YouTube
+              </a>
             </li>
             <li>
-              <a>Instagram</a>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Instagram
+              </a>
             </li>
           </ul>
         </div>

@@ -1,0 +1,23 @@
+.productTitle {
+  display: block;
+  align-items: center;
+  justify-content: center;
+}
+
+.productImg {
+  height: 20rem;
+  width: 18rem;
+}
+
+.aboutItem {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  column-gap: 5rem;
+}
+
+.productData {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

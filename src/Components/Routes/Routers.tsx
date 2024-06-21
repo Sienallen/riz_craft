@@ -5,6 +5,7 @@ import ShopPage from '../ShopPage';
 import Home from '../Home/Home';
 import About from '../About/About';
 import Contacts from '../Contacts/Contacts';
+import Product from '../Products/Product';
 
 const Routers = createBrowserRouter([
   {
@@ -14,6 +15,7 @@ const Routers = createBrowserRouter([
       {
         path: '/',
         element: <Home />,
+        errorElement: <div>404 Not Found</div>,
       },
 
       {
@@ -27,6 +29,11 @@ const Routers = createBrowserRouter([
       {
         path: 'contactsPage',
         element: <Contacts />,
+      },
+      {
+        path: 'product/:path',
+        element: <Product />,
+        errorElement: <div>Product does not exist.</div>,
       },
     ],
   },
