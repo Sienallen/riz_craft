@@ -1,7 +1,14 @@
 import React from 'react';
+import Construction from '../Construction';
 
 const About = () => {
-  return <div>This is the About page</div>;
+  return(
+    <>
+    <div>
+      <Construction/>
+    </div>
+    </>
+  )
 };
 
 export default About;

@@ -1,7 +1,14 @@
 import React from 'react';
+import Construction from '../Construction';
 
 const Contacts = () => {
-  return <div>This is the Contact Page</div>;
+  return(
+    <>
+      <div>
+        <Construction/>
+      </div>
+    </>
+  )
 };
 
 export default Contacts;

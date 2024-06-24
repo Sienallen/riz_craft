@@ -24,7 +24,7 @@ const Product = () => {
           <section className="productData">
             <h2 className="productTitle">{itemData['name']}</h2>
             <p>{itemData['description']}</p>
-            <button>Add to cart</button>
+            <button className='gold-button cartButton'>Add to cart</button>
           </section>
         </div>
       </>
