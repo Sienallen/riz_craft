@@ -2,6 +2,8 @@ import whiteBag from '../../assets/White Red Bow Bag.jpg';
 import floweredBag from '../../assets/Flowered Bag.jpg';
 import whiteTulips from '../../assets/WhiteTulips.jpg';
 import plaidBag from '../../assets/Red Bag.jpg';
+import bracelets from '../../assets/Candies.jpg';
+import pinkCarnation from '../../assets/PinkCarnations.jpg';
 
 export const productsList = [
   {
@@ -32,6 +34,20 @@ export const productsList = [
     price: 33.99,
     description: 'A red and white plaid bag with 2 red bows.',
     path: 'plaidBag',
+  },
+  {
+    name: 'Bracelets',
+    img: bracelets,
+    price: 9.99,
+    description: 'Bracelets made with a variety of beads and charms.',
+    path: 'bracelets',
+  },
+  {
+    name: 'Carnations Bouquet',
+    img: pinkCarnation,
+    price: 34.99,
+    description: 'A bouquet of pink carnations.',
+    path: 'carnations',
   },
 ];
 

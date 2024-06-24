@@ -18,7 +18,7 @@ const PopCard = ({ name, img, description, path }: props) => {
           <h4>{name}</h4>
           <div className="popDescript">
             <p>{description}</p>
-            <Link to={path} className=" gold-button view">
+            <Link to={'shopPage/' + path} className=" gold-button view">
               View
               <svg
                 xmlns="http://www.w3.org/2000/svg"

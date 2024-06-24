@@ -9,7 +9,7 @@ const Header = () => {
         <h6 className="announcement">Spend Over $50 For Free Shipping</h6>
       </div>
       <nav>
-        <h3>Rizelle's Crafts</h3>
+        <h3>Riz's Crafts</h3>
         <div>
           <ul>
             <li>

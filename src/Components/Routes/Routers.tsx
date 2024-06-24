@@ -31,7 +31,7 @@ const Routers = createBrowserRouter([
         element: <Contacts />,
       },
       {
-        path: 'product/:path',
+        path: 'shopPage/:path',
         element: <Product />,
         errorElement: <div>Product does not exist.</div>,
       },
