@@ -1,4 +1,3 @@
-import React from 'react';
 import whiteBag from '../../../assets/White Red Bow Bag.jpg';
 import floweredBag from '../../../assets/Flowered Bag.jpg';
 import whiteTulips from '../../../assets/WhiteTulips.jpg';

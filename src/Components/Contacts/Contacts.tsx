@@ -1,14 +1,13 @@
-import React from 'react';
 import Construction from '../Construction';
 
 const Contacts = () => {
-  return(
+  return (
     <>
       <div>
-        <Construction/>
+        <Construction />
       </div>
     </>
-  )
+  );
 };
 
 export default Contacts;

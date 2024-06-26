@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { productsList } from './Products/ProductLists';
 import './ShopPage.css';
 import ProductCard from './Products/ProductCard';
-import { useSearchParams } from 'react-router-dom';
 
 const ShopPage = () => {
   /* const [searchParams, setSearchParams] = useSearchParams({

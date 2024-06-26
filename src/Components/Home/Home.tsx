@@ -1,4 +1,3 @@
-import React from 'react';
 import Hero from './Hero Section/Hero';
 import Populars from './Populars Section/Populars';
 

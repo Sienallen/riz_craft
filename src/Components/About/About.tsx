@@ -1,14 +1,13 @@
-import React from 'react';
 import Construction from '../Construction';
 
 const About = () => {
-  return(
+  return (
     <>
-    <div>
-      <Construction/>
-    </div>
+      <div>
+        <Construction />
+      </div>
     </>
-  )
+  );
 };
 
 export default About;
