@@ -16,7 +16,7 @@
   /*  border-radius: 0.5rem; */
 }
 
-.product-body {
+.product-cardBody {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -26,7 +26,7 @@
   margin-top: 0.5rem;
 }
 
-.product-descript {
+.product-cardDescript {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -35,14 +35,14 @@
   justify-content: space-between;
 }
 
-.product-descript a {
+.product-cardDescript a {
   display: flex;
   align-items: center;
   text-decoration: none;
   color: black;
 }
 
-.product-descript a svg {
+.product-cardDescript a svg {
   fill: #ff5fa2;
 }
 .view:hover svg {

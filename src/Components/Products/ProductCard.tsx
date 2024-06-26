@@ -14,9 +14,9 @@ const ProductCard = ({ name, img, description, path }: props) => {
     <>
       <div className="product-card">
         <img src={img} alt={name} />
-        <div className="product-body">
+        <div className="product-cardBody">
           <h4>{name}</h4>
-          <div className="product-descript">
+          <div className="product-cardDescript">
             <p>{description}</p>
             <Link to={path} className=" gold-button view">
               View

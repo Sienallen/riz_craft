@@ -1,8 +1,33 @@
-.productTitle {
-  display: block;
-  align-items: center;
-  justify-content: center;
+.product-header{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
 }
+
+.product-header svg{
+  border: solid red 1px;
+  height: 2rem;
+  width: 2rem;
+  align-self: center;
+  stroke: #fcc89b;
+  stroke-width: .2rem;
+  fill-opacity: 0%;
+  fill: #ff5fa2;
+  transition: .5s;
+}
+
+.product-header svg:hover{
+  fill: #ff5fa2;
+  fill-opacity: 100%;
+  stroke: #ff5fa2;
+}
+
+.product-title {
+  border: solid red 1px;
+} 
+
+
 
 .productImg {
   height: 100%;
@@ -10,6 +35,7 @@
 }
 
 .aboutItem {
+  margin-top: 2%;
   display: flex;
   justify-content: center;
   align-items: start;
@@ -20,8 +46,45 @@
 .productData {
   display: flex;
   flex-direction: column;
-  background-color: aqua;
   height: 100%;
-  justify-content: space-around;
-  align-items: center;
+  align-items: start;
+  border: red solid 1px;
+}
+
+.product-rating{
+  display: flex;
+}
+
+.rating-number{
+  align-self: start;
+}
+
+.star{
+  fill: #fcc89b;
+  align-self: center;
+}
+
+.product-body{
+  border: solid 1px red;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 1rem;
+  
+}
+
+/* .product-body + div{
+
+} */
+
+.product-description{
+  border: solid 1px red;
+}
+
+.product-button{
+  border: red 1px solid;
+  justify-self: end;
+  height: 3rem;
+  width: 8rem;
 }
