@@ -6,13 +6,13 @@ const Footer = () => {
     <>
       <footer>
         <div>
-          <h2>Rizelle's Crafts</h2>
+          <h2>Riz's Crafts</h2>
         </div>
         <div className="site-map">
           <h4>SiteMap</h4>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/riz_craft">Home</Link>
             </li>
             <li>
               <Link to="shopPage">Shop</Link>

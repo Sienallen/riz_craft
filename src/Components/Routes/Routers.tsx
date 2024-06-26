@@ -8,11 +8,11 @@ import Product from '../Products/Product';
 
 const Routers = createBrowserRouter([
   {
-    path: '/',
+    path: '/riz_craft',
     element: <App />,
     children: [
       {
-        path: '/',
+        path: '/riz_craft',
         element: <Home />,
         errorElement: <div>404 Not Found</div>,
       },
