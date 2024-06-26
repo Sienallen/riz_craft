@@ -1,33 +1,30 @@
-.product-header{
+.product-header {
   display: flex;
   width: 100%;
   justify-content: space-between;
-
 }
 
-.product-header svg{
-  border: solid red 1px;
+.product-header svg {
+  /* border: solid red 1px; */
   height: 2rem;
   width: 2rem;
   align-self: center;
   stroke: #fcc89b;
-  stroke-width: .2rem;
+  stroke-width: 0.2rem;
   fill-opacity: 0%;
   fill: #ff5fa2;
-  transition: .5s;
+  transition: 0.5s;
 }
 
-.product-header svg:hover{
+.product-header svg:hover {
   fill: #ff5fa2;
   fill-opacity: 100%;
   stroke: #ff5fa2;
 }
 
 .product-title {
-  border: solid red 1px;
-} 
-
-
+  /* border: solid red 1px; */
+}
 
 .productImg {
   height: 100%;
@@ -48,42 +45,41 @@
   flex-direction: column;
   height: 100%;
   align-items: start;
-  border: red solid 1px;
+  /* border: red solid 1px; */
 }
 
-.product-rating{
+.product-rating {
   display: flex;
 }
 
-.rating-number{
+.rating-number {
   align-self: start;
 }
 
-.star{
+.star {
   fill: #fcc89b;
   align-self: center;
 }
 
-.product-body{
-  border: solid 1px red;
+.product-body {
+  /* border: solid 1px red; */
   display: flex;
   height: 100%;
   flex-direction: column;
   justify-content: space-between;
   margin-top: 1rem;
-  
 }
 
 /* .product-body + div{
 
 } */
 
-.product-description{
-  border: solid 1px red;
+.product-description {
+  /* border: solid 1px red; */
 }
 
-.product-button{
-  border: red 1px solid;
+.product-button {
+  /* border: red 1px solid; */
   justify-self: end;
   height: 3rem;
   width: 8rem;
