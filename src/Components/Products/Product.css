@@ -22,9 +22,9 @@
   stroke: #ff5fa2;
 }
 
-.product-title {
-  /* border: solid red 1px; */
-}
+/* .product-title {
+  border: solid red 1px;
+} */
 
 .productImg {
   height: 100%;
@@ -73,10 +73,10 @@
 /* .product-body + div{
 
 } */
-
+/* 
 .product-description {
-  /* border: solid 1px red; */
-}
+  border: solid 1px red;
+} */
 
 .product-button {
   /* border: red 1px solid; */

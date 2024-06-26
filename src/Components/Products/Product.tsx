@@ -38,7 +38,7 @@ const Product = () => {
                 <p className="product-price">${itemData['price']}</p>
                 <div className="product-rating">
                   {Array.from({ length: itemData['rating'] }).map(
-                    (_, index) => (
+                    (_) => (
                       <FaStar className="star" />
                     )
                   )}
