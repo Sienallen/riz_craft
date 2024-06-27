@@ -1,4 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
+import type { RouteObject } from 'react-router-dom';
 import App from '../../App';
 import ShopPage from '../ShopPage';
 import Home from '../Home/Home';
@@ -6,13 +7,13 @@ import About from '../About/About';
 import Contacts from '../Contacts/Contacts';
 import Product from '../Products/Product';
 
-const Routers = createBrowserRouter([
+const routes: RouteObject[] = [
   {
-    path: '/riz_craft',
+    path: '/',
     element: <App />,
     children: [
       {
-        path: '/riz_craft',
+        path: '/',
         element: <Home />,
         errorElement: <div>404 Not Found</div>,
       },
@@ -36,6 +37,10 @@ const Routers = createBrowserRouter([
       },
     ],
   },
-]);
+];
+
+const Routers = createBrowserRouter(routes, {
+  basename: '/riz_craft/',
+});
 
 export default Routers;
