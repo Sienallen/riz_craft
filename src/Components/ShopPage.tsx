@@ -37,6 +37,7 @@ const ShopPage = () => {
                 img={item.img}
                 description={item.description}
                 path={item.path}
+                key={'shopPage' + item.name}
               />
             ))}
           </div>
