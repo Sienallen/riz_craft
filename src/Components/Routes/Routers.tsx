@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createHashRouter } from 'react-router-dom';
 import type { RouteObject } from 'react-router-dom';
 import App from '../../App';
 import ShopPage from '../ShopPage';
@@ -39,8 +39,6 @@ const routes: RouteObject[] = [
   },
 ];
 
-const Routers = createBrowserRouter(routes, {
-  basename: '/riz_craft/',
-});
+const Routers = createHashRouter(routes);
 
 export default Routers;
