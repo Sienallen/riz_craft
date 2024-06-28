@@ -1,5 +1,5 @@
 .popCard {
-  height: 24rem;
+  height: auto;
   width: 15rem;
   display: flex;
   flex-direction: column;
@@ -60,7 +60,6 @@
 @media all and (max-width: 600px) {
   .popCard {
     height: 20rem;
-    width: 13rem;
   }
 
   .popCard img {
@@ -77,5 +76,37 @@
 
   .popDescript p {
     font-size: 0.7rem;
+  }
+}
+
+@media all and (max-width: 500px) {
+  .popCard {
+    height: auto;
+    width: 10rem;
+  }
+
+  .popCard img {
+    margin-top: 1rem;
+    width: 6rem;
+    height: 6rem;
+    object-fit: cover;
+    border-radius: 0.5rem;
+  }
+
+  .popBody h4 {
+    font-size: 0.8rem;
+  }
+
+  .popDescript p {
+    font-size: 0.6rem;
+  }
+
+  .view {
+    font-size: 0.6rem;
+  }
+
+  .popDescript a svg {
+    height: 1rem;
+    width: 1rem;
   }
 }
