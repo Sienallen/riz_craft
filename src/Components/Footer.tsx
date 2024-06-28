@@ -1,18 +1,35 @@
+import { RiArrowDownSLine } from 'react-icons/ri';
 import './Footer.css';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const Footer = () => {
+  const [dropDown, setDropDown] = useState('');
+
+  function handleAdd(newDrop: string) {
+    dropDown === newDrop ? setDropDown('') : setDropDown(newDrop);
+  }
+
   return (
     <>
       <footer>
         <div>
           <h2>Riz's Crafts</h2>
         </div>
-        <div className="site-map">
-          <h4>SiteMap</h4>
-          <ul>
+        <div className="foot-headers" id="sitemap">
+          <div className="site-title" onClick={() => handleAdd('site-links')}>
+            <h4>SiteMap</h4>
+            <RiArrowDownSLine id="down-arrow" />
+          </div>
+
+          <ul
+            id="site-links "
+            className={`footer-dropdown dropdown-collapse ${
+              dropDown === 'site-links' ? ' dropdown-active' : ''
+            }`}
+          >
             <li>
-              <Link to="/riz_craft">Home</Link>
+              <Link to="/">Home</Link>
             </li>
             <li>
               <Link to="shopPage">Shop</Link>
@@ -25,9 +42,21 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div>
-          <h4>Contacts</h4>
-          <ul>
+        <div
+          className="foot-headers"
+          id="contacts"
+          onClick={() => handleAdd('contact-info')}
+        >
+          <div className="site-title">
+            <h4>Contacts</h4>
+            <RiArrowDownSLine id="down-arrow" />
+          </div>
+          <ul
+            id="contact-info"
+            className={`footer-dropdown dropdown-collapse ${
+              dropDown === 'contact-info' ? ' dropdown-active' : ''
+            }`}
+          >
             <li>
               <p>RizCraft@gmail.com</p>
             </li>
@@ -36,9 +65,21 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div>
-          <h4>SiteMap</h4>
-          <ul>
+        <div
+          className="foot-headers"
+          id="socials"
+          onClick={() => handleAdd('social-links')}
+        >
+          <div className="site-title">
+            <h4>Socials</h4>
+            <RiArrowDownSLine id="down-arrow" />
+          </div>
+          <ul
+            id="social-links"
+            className={`footer-dropdown dropdown-collapse ${
+              dropDown === 'social-links' ? ' dropdown-active' : ''
+            }`}
+          >
             <li>
               <a
                 href="https://www.facebook.com/"
