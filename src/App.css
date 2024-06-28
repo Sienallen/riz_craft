@@ -1,12 +1,12 @@
 * {
   margin: 0;
+  padding: 0;
 }
-/*
-body {
-  background-image: linear-gradient(to bottom, #ff5fa2, #fcc89b);
-  background-attachment: fixed;
-}
- */
+
+/* body {
+  margin: 0;
+  padding: 0;
+} */
 
 .gold-button {
   background-color: #fcc89b;
