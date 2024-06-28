@@ -1,5 +1,5 @@
 .popCard {
-  height: 25rem;
+  height: 24rem;
   width: 15rem;
   display: flex;
   flex-direction: column;
@@ -26,6 +26,10 @@
   margin-top: 0.5rem;
 }
 
+.popBody h4 {
+  font-size: 1.2rem;
+}
+
 .popDescript {
   display: flex;
   flex-direction: column;
@@ -33,6 +37,10 @@
   margin-top: 0.5rem;
   margin-bottom: 1.5rem;
   justify-content: space-between;
+}
+
+.popDescript p {
+  font-size: 0.85rem;
 }
 
 .popDescript a {
@@ -47,4 +55,27 @@
 }
 .view:hover svg {
   fill: #fcc89b;
+}
+
+@media all and (max-width: 600px) {
+  .popCard {
+    height: 20rem;
+    width: 13rem;
+  }
+
+  .popCard img {
+    margin-top: 1rem;
+    width: 9rem;
+    height: 9rem;
+    object-fit: cover;
+    border-radius: 0.5rem;
+  }
+
+  .popBody h4 {
+    font-size: 1rem;
+  }
+
+  .popDescript p {
+    font-size: 0.7rem;
+  }
 }

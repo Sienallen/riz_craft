@@ -18,5 +18,6 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  column-gap: 2rem;
+  column-gap: 1.5rem;
+  row-gap: 1rem;
 }

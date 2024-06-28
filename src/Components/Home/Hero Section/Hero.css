@@ -11,8 +11,24 @@
   flex-direction: column;
   border-radius: 1rem;
   padding: 1rem;
-  width: fit-content;
+  width: 20rem;
   position: absolute;
-  top: 20rem;
-  left: 5rem;
+  top: 35%;
+  left: 5%;
+  font-size: 1rem;
+}
+
+@media all and (max-width: 600px) {
+  .hero-card {
+    width: 15rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media all and (max-width: 400px) {
+  .hero-card {
+    top: 40%;
+    width: 13rem;
+    font-size: 0.65rem;
+  }
 }
