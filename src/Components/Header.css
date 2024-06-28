@@ -1,14 +1,6 @@
 header {
   overflow: hidden;
 }
-.announcement {
-  background-color: #ff84b7;
-  width: 100%;
-  text-align: center;
-  font-size: 0.7rem;
-  padding: 0.3rem;
-  margin: auto;
-}
 
 #site-title {
   display: flex;
@@ -24,6 +16,9 @@ header {
   color: #ff5fa2;
   padding-top: 1rem;
   padding-bottom: 1rem;
+  width: 100%;
+  background-color: white;
+  position: fixed;
 }
 
 #nav-links h3 {

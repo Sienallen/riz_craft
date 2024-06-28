@@ -6,10 +6,6 @@ import { IoClose } from 'react-icons/io5';
 const Header = () => {
   return (
     <header>
-      <div>
-        <h6 className="announcement">Spend Over $50 For Free Shipping</h6>
-      </div>
-
       <div className="media-header">
         <h2 id="site-title">Riz's Craft</h2>
 
