@@ -66,6 +66,7 @@ const Header = () => {
           </div>
         </div>
       </nav>
+      <div id="spacer"></div>
     </header>
   );
 };
