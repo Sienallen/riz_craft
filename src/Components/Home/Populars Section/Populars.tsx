@@ -45,6 +45,7 @@ const Populars = () => {
               img={popular.img}
               description={popular.description}
               path={popular.path}
+              key={'populars' + popular.name}
             />
           ))}
         </section>
