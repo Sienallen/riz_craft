@@ -15,6 +15,10 @@ const Product = () => {
   if (itemData !== null) {
     return (
       <>
+        <div>
+          <h6 className="announcement">Spend Over $50 For Free Shipping</h6>
+        </div>
+
         <div className="aboutItem">
           <img
             src={itemData['img']}

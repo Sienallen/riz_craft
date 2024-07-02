@@ -2,8 +2,12 @@ import { RxHamburgerMenu } from 'react-icons/rx';
 import './Header.css';
 import { NavLink } from 'react-router-dom';
 import { IoClose } from 'react-icons/io5';
+import { useState } from 'react';
 
 const Header = () => {
+
+  const [cart, setCart] = useState([]);
+
   return (
     <header>
       <div className="media-header">
