@@ -8,6 +8,15 @@ const Header = () => {
 
   const [cart, setCart] = useState([]);
 
+  const addCart = (item : object) => (
+    setCart(prevCart => {
+      return{
+        ...prevCart, item
+      }
+    })
+
+  );
+
   return (
     <header>
       <div className="media-header">
@@ -29,16 +38,16 @@ const Header = () => {
           <h3>Riz's Crafts</h3>
           <ul>
             <li>
-              <NavLink to="/">Home</NavLink>
+              <NavLink to="/" preventScrollReset={true}>Home</NavLink>
             </li>
             <li>
-              <NavLink to="shopPage">Shop</NavLink>
+              <NavLink to="shopPage" preventScrollReset={true}>Shop</NavLink>
             </li>
             <li>
-              <NavLink to="aboutPage">About</NavLink>
+              <NavLink to="aboutPage" preventScrollReset={true}>About</NavLink>
             </li>
             <li>
-              <NavLink to="contactsPage">Contacts</NavLink>
+              <NavLink to="contactsPage" preventScrollReset={true}>Contacts</NavLink>
             </li>
           </ul>
 
