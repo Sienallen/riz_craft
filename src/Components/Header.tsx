@@ -1,21 +1,30 @@
 import { RxHamburgerMenu } from 'react-icons/rx';
 import './Header.css';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { IoClose } from 'react-icons/io5';
 import { useState } from 'react';
+import whiteBag from '../assets/White Red Bow Bag.jpg';
 
 const Header = () => {
+  const [cart, setCart] = useState([
+    {
+      name: 'White Bag',
+      img: whiteBag,
+      price: 39.99,
+      rating: 4.6,
+      description:
+        'White bag with red bow. Comes with both a bag and a matching purse.',
+      path: 'whiteBag',
+    },
+  ]);
 
-  const [cart, setCart] = useState([]);
-
-  const addCart = (item : object) => (
-    setCart(prevCart => {
-      return{
-        ...prevCart, item
-      }
-    })
-
-  );
+  const addCart = (item: object) =>
+    setCart((prevCart) => {
+      return {
+        ...prevCart,
+        item,
+      };
+    });
 
   return (
     <header>
@@ -38,16 +47,24 @@ const Header = () => {
           <h3>Riz's Crafts</h3>
           <ul>
             <li>
-              <NavLink to="/" preventScrollReset={true}>Home</NavLink>
+              <NavLink to="/" preventScrollReset={true}>
+                Home
+              </NavLink>
             </li>
             <li>
-              <NavLink to="shopPage" preventScrollReset={true}>Shop</NavLink>
+              <NavLink to="shopPage" preventScrollReset={true}>
+                Shop
+              </NavLink>
             </li>
             <li>
-              <NavLink to="aboutPage" preventScrollReset={true}>About</NavLink>
+              <NavLink to="aboutPage" preventScrollReset={true}>
+                About
+              </NavLink>
             </li>
             <li>
-              <NavLink to="contactsPage" preventScrollReset={true}>Contacts</NavLink>
+              <NavLink to="contactsPage" preventScrollReset={true}>
+                Contacts
+              </NavLink>
             </li>
           </ul>
 
@@ -64,6 +81,7 @@ const Header = () => {
               />
             </svg>
 
+            <Link to={}> </Link>
             <svg
               width="40"
               height="40"
