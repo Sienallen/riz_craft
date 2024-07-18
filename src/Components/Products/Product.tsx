@@ -1,7 +1,9 @@
+import { useContext } from 'react';
 import './Product.css';
 import { productsList } from './ProductLists';
 import { FaStar, FaStarHalf } from 'react-icons/fa6';
 import { useParams } from 'react-router';
+import { CartContext } from '../Context';
 
 const Product = () => {
   const params = useParams();
@@ -12,7 +14,31 @@ const Product = () => {
     }
   });
 
+  
+
+  const cartContext = useContext(CartContext);
+  
+  const addToCart = (path : string) =>{
+    if(cartContext !== undefined && cartContext.setCart !== undefined){
+      if(cartContext.cart !== undefined){
+        const updatedCart = [...cartContext.cart]
+        const index = updatedCart.map(item => item.path).indexOf(path)
+        updatedCart[index].number++;
+        cartContext.setCart(updatedCart)
+      }else if(cartContext.cart === undefined || []){
+        const updatedCart = [{number : 1, path : path}]
+        cartContext.setCart(updatedCart)
+      }
+      console.log(cartContext.cart)
+      
+    }
+    console.log('outside if statement')
+    
+  }
+
   if (itemData !== null) {
+    const path :string = itemData['path']
+
     return (
       <>
         <div>
@@ -57,7 +83,7 @@ const Product = () => {
 
               <p className="product-description">{itemData['description']}</p>
               <p> 5-10 days shipping</p>
-              <button className="gold-button product-button">
+              <button className="gold-button product-button" onClick={() => addToCart(path)}>
                 Add to cart
               </button>
             </div>

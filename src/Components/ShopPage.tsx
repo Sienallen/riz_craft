@@ -4,10 +4,6 @@ import './ShopPage.css';
 import ProductCard from './Products/ProductCard';
 
 const ShopPage = () => {
-  /* const [searchParams, setSearchParams] = useSearchParams({
-    input: '',
-  });
-  const input = searchParams.get('input'); */
   const [q, setQ] = useState('');
 
   const items = productsList.filter((item) => {

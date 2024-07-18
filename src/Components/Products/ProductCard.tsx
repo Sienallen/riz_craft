@@ -9,6 +9,7 @@ interface props {
 }
 
 const ProductCard = ({ name, img, description, path }: props) => {
+  
   return (
     <>
       <div className="product-card">

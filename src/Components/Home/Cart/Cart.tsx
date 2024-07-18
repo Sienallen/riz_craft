@@ -1,11 +1,40 @@
-import React from 'react';
+import {useContext } from 'react';
+import {CartContext} from '../../Context';
 
-interface props {
-  cart: object;
-}
+const Cart = () => {
+    const cartContext = useContext(CartContext);
 
-const Cart = ({ cart }: props) => {
-  return <></>;
+    const displayCart = () => {
+      if(cartContext && cartContext.cart !== undefined){
+        let basket = cartContext.cart;
+        return (
+          <>
+          {basket.map((item) => 
+            (
+              <div>
+                {item.number}
+              </div>
+      
+            ))}
+          </>
+          
+        )
+      }else{
+        return (
+          <>
+          <h1>There is nothing in your cart.</h1>
+          </>
+        )
+        
+      }
+    }
+
+  return (
+  <>
+    <div>
+      {displayCart()}
+    </div>
+  </>);
 };
 
 export default Cart;
