@@ -19,20 +19,22 @@ const Product = () => {
   const cartContext = useContext(CartContext);
   
   const addToCart = (path : string) =>{
+    
     if(cartContext !== undefined && cartContext.setCart !== undefined){
+
       if(cartContext.cart !== undefined){
         const updatedCart = [...cartContext.cart]
         const index = updatedCart.map(item => item.path).indexOf(path)
         updatedCart[index].number++;
         cartContext.setCart(updatedCart)
+
       }else if(cartContext.cart === undefined || []){
         const updatedCart = [{number : 1, path : path}]
         cartContext.setCart(updatedCart)
       }
-      console.log(cartContext.cart)
+      
       
     }
-    console.log('outside if statement')
     
   }
 

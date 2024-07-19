@@ -1,5 +1,6 @@
 import {useContext } from 'react';
 import {CartContext} from '../../Context';
+import CartCard from './CartCard';
 
 const Cart = () => {
     const cartContext = useContext(CartContext);
@@ -11,11 +12,9 @@ const Cart = () => {
           <>
           {basket.map((item) => 
             (
-              <div>
-                {item.number}
-              </div>
-      
-            ))}
+              <CartCard path={item.path} amount={item.number} key={'cart' + item.path}/>
+            )
+          )}
           </>
           
         )

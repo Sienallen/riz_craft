@@ -22,13 +22,6 @@ const routes: RouteObject[] = [
       {
         path: 'shopPage',
         element: <ShopPage />,
-        children: [
-          {
-            path: 'shopPage/:path',
-            element: <Product />,
-            errorElement: <div>Product does not exist.</div>,
-          },
-        ]
       },
       {
         path: 'aboutPage',
@@ -42,6 +35,11 @@ const routes: RouteObject[] = [
       {
         path: 'cartPage',
         element: <Cart/>,
+      },
+      {
+        path: 'shopPage/:path',
+        element: <Product />,
+        errorElement: <div>Product does not exist.</div>,
       },
     ],
   },

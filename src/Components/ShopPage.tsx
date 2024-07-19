@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { productsList } from './Products/ProductLists';
 import './ShopPage.css';
 import ProductCard from './Products/ProductCard';

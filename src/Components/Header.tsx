@@ -7,7 +7,7 @@ import { CartContext } from './Context';
 import {Cart} from './Interface'
 
 const Header = () => {
-  const [cart, setCart] = useState<Cart[]>();
+  
 
   return (
     <header>
@@ -35,11 +35,9 @@ const Header = () => {
               </NavLink>
             </li>
             <li>
-              <CartContext.Provider value = {{cart, setCart}}>
-                <NavLink to="shopPage" preventScrollReset={true}>
-                  Shop
-                </NavLink>
-              </CartContext.Provider>
+              <NavLink to="shopPage" preventScrollReset={true}>
+                Shop
+              </NavLink>
             </li>
             <li>
               <NavLink to="aboutPage" preventScrollReset={true}>
@@ -65,8 +63,6 @@ const Header = () => {
                 className="icon"
               />
             </svg>
-
-            <CartContext.Provider value = {{cart, setCart}}>
               <Link to={'cartPage'}> 
                 <svg
                   width="40"
@@ -81,7 +77,6 @@ const Header = () => {
                   />
                 </svg>
               </Link>
-            </CartContext.Provider>
             
             
           </div>
