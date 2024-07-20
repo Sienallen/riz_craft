@@ -15,7 +15,14 @@ const CartCard = ({path, amount} : props ) => {
   return (
     <>
       <div>
-        <h2>{item.name}</h2>
+        <section>
+          <img src={item.img} alt="item image" height='80' width = '80' className='item-img'/>
+        </section>
+        <section>
+          <h2>{item.name}</h2>
+          <p>{item.description}</p>
+        </section>
+        
       </div>
     </>
   )
