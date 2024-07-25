@@ -1,5 +1,4 @@
-import {useContext } from 'react';
-import {CartContext, useCartContext} from '../../Context';
+import {useCartContext} from '../../Context';
 import CartCard from './CartCard';
 import './Cart.css'
 import { productsList } from '../../Products/ProductLists';
@@ -7,23 +6,15 @@ import { productsList } from '../../Products/ProductLists';
 const Cart = () => {
     const cartContext = useCartContext();
 
-    const cartList = cartContext.cart.map((cart) => ({
-      ...productsList[productsList.map(item => item.path).indexOf(cart.path)],
-      amount: cart.number
-    }
-      
-    ))
-
-    const subtotal = cartList.map(item => item.price * item.amount).reduce((sum, price) => sum + price)
-
-
-    console.log('Cart List below and subtotal');
-    console.log(cartList);
-    console.log(subtotal);
-
     const displayCart = () => {
-      if(cartContext.cart.length != 0){
-        let basket = cartContext.cart;
+      if(cartContext.cart.length !== 0){
+        const cartList = cartContext.cart.map((cart) => ({
+          ...productsList[productsList.map(item => item.path).indexOf(cart.path)],
+          amount: cart.number
+        }))
+    
+        const subtotal = cartList.map(item => item.price * item.amount).reduce((sum, price) => sum + price)
+
         return (
           <>
           <div>
@@ -69,7 +60,7 @@ const Cart = () => {
       }else{
         return (
           <>
-          <h1>There is nothing in your cart.</h1>
+            <h1 className='empty-list'>There is nothing in your cart.</h1>
           </>
         )
         

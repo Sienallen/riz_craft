@@ -7,7 +7,7 @@ export interface Cart {
 
 export interface cartContext {
     cart : Cart[]
-    setCart: Dispatch<React.SetStateAction<Cart[]>> | undefined
+    setCart: Dispatch<React.SetStateAction<Cart[]>>
 }
 
 export interface cartList {
@@ -18,4 +18,18 @@ export interface cartList {
     rating: number;
     description: string;
     path: string;
+}
+
+export interface fav{
+    name: string;
+    img: string;
+    price: number;
+    rating: number;
+    description: string;
+    path: string;
+}
+
+export interface favContext {
+    fav: fav[];
+    setFav: Dispatch<React.SetStateAction<fav[]>>
 }

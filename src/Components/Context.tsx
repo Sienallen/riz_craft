@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { cartContext } from "./Interface";
+import { cartContext, favContext } from "./Interface";
 
 
 export const CartContext = createContext<cartContext | undefined>(undefined);
@@ -12,4 +12,15 @@ export function useCartContext() {
     }
   
     return cart;
+  }
+
+  export const FavContext = createContext<favContext | undefined>(undefined);
+
+  export function useFavContext(){
+    const fav = useContext(FavContext);
+
+    if(fav === undefined){
+      throw new Error('useFavContext must be used with FavContext');
+    }
+    return fav;
   }

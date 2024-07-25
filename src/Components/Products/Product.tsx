@@ -28,9 +28,11 @@ const Product = () => {
         if(index === -1){
 
           cartContext.setCart([...updatedCart, {path : newPath, number : newAmount }])
+        }else{
+          updatedCart[index].number++;
+          cartContext.setCart(updatedCart)
         }
-        updatedCart[index].number++;
-        cartContext.setCart(updatedCart)
+        
 
       }else if(cartContext.cart === undefined || []){
         const updatedCart = [{number : 1, path : newPath}]

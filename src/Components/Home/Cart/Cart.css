@@ -1,3 +1,10 @@
+.empty-list{
+    margin: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #cart-title{
     display: flex;
     flex-direction: row;

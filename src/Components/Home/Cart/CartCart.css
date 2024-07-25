@@ -31,6 +31,10 @@
     width: 100%;
 }
 
+#cartCard-title p:nth-child(3){
+    cursor: pointer;
+}
+
 #cart-price{
     display: flex;
     flex-basis: 22%;
@@ -56,6 +60,7 @@
     border: #fcc89b solid;
     border-width: thin 0 thin thin;
     border-radius: .4rem 0 0 .4rem ;
+    cursor: pointer;
 }
 
 #cart-qty p:nth-child(2){
@@ -68,6 +73,7 @@
     border: #fcc89b solid;
     border-width: thin thin thin 0;
     border-radius: 0 .4rem .4rem 0;
+    cursor: pointer;
 }
 
 #cart-item-total{

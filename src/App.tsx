@@ -9,18 +9,23 @@ import { CartContext } from './Components/Context';
 function App() {
 
   const [cart, setCart] = useState<Cart[]>([
-  {
+  /* {
     number: 2,
     path: 'floweredBag',
-  }
+  } */
 ]);
+
+  const [fav, setFav] = useState([])
 
   return (
     <>
       <Header />
+      <body>
       <CartContext.Provider value = {{cart, setCart}}>
         <Outlet />
       </CartContext.Provider>
+      </body>
+      
      
       <Footer />
     </>

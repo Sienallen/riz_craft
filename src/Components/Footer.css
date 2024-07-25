@@ -6,6 +6,8 @@ footer {
   justify-content: space-evenly;
   padding-top: 1.5rem;
   padding-bottom: 2rem;
+  /* position: absolute;
+  bottom: 0; */
 }
 
 footer ul li {
@@ -21,6 +23,8 @@ footer ul li p {
 #down-arrow {
   display: none;
 }
+
+
 
 @media all and (max-width: 600px) {
   footer {
