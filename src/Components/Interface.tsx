@@ -5,8 +5,17 @@ export interface Cart {
     path: string,
 }
 
-
 export interface cartContext {
-    cart : Cart[] | undefined
-    setCart: Dispatch<React.SetStateAction<Cart[] | undefined>> | undefined
+    cart : Cart[]
+    setCart: Dispatch<React.SetStateAction<Cart[]>> | undefined
+}
+
+export interface cartList {
+    amount: number;
+    name: string;
+    img: string;
+    price: number;
+    rating: number;
+    description: string;
+    path: string;
 }

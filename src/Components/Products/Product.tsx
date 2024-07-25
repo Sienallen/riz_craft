@@ -18,18 +18,22 @@ const Product = () => {
 
   const cartContext = useContext(CartContext);
   
-  const addToCart = (path : string) =>{
+  const addToCart = (newPath : string, newAmount: number = 1) =>{
     
     if(cartContext !== undefined && cartContext.setCart !== undefined){
 
       if(cartContext.cart !== undefined){
         const updatedCart = [...cartContext.cart]
-        const index = updatedCart.map(item => item.path).indexOf(path)
+        const index = updatedCart.map(item => item.path).indexOf(newPath)
+        if(index === -1){
+
+          cartContext.setCart([...updatedCart, {path : newPath, number : newAmount }])
+        }
         updatedCart[index].number++;
         cartContext.setCart(updatedCart)
 
       }else if(cartContext.cart === undefined || []){
-        const updatedCart = [{number : 1, path : path}]
+        const updatedCart = [{number : 1, path : newPath}]
         cartContext.setCart(updatedCart)
       }
       

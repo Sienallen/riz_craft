@@ -8,10 +8,7 @@ import { CartContext } from './Components/Context';
 
 function App() {
 
-  const [cart, setCart] = useState<Cart[] | undefined>([{
-    number: 1,
-    path: 'tulipBouquet'
-  },
+  const [cart, setCart] = useState<Cart[]>([
   {
     number: 2,
     path: 'floweredBag',
