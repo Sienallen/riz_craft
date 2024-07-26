@@ -7,6 +7,7 @@ import About from '../About/About';
 import Contacts from '../Contacts/Contacts';
 import Product from '../Products/Product';
 import Cart from '../Home/Cart/Cart';
+import { Fav } from '../Home/Fav/Fav';
 
 const routes: RouteObject[] = [
   {
@@ -36,6 +37,12 @@ const routes: RouteObject[] = [
         path: 'cartPage',
         element: <Cart/>,
       },
+
+      {
+        path: 'favPage',
+        element: <Fav/>
+      },
+
       {
         path: 'shopPage/:path',
         element: <Product />,

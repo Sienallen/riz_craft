@@ -25,7 +25,7 @@
   transition: 0.5s;
 }
 
-.product-header svg:hover {
+.product-header svg:hover, #in-fav {
   fill: #ff5fa2;
   fill-opacity: 100%;
   stroke: #ff5fa2;

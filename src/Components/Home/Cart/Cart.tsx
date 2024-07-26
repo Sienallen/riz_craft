@@ -8,6 +8,7 @@ const Cart = () => {
 
     const displayCart = () => {
       if(cartContext.cart.length !== 0){
+
         const cartList = cartContext.cart.map((cart) => ({
           ...productsList[productsList.map(item => item.path).indexOf(cart.path)],
           amount: cart.number
@@ -18,7 +19,9 @@ const Cart = () => {
         return (
           <>
           <div>
-            <div id='cart-title'>
+
+          <h1 id='cart-title'> Shopping Cart</h1>
+            <div id='cart-labels'>
               <p>Item</p>
               <p>Price</p>
               <p>Quantity</p>

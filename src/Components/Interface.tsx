@@ -20,7 +20,7 @@ export interface cartList {
     path: string;
 }
 
-export interface fav{
+export interface Crafts{
     name: string;
     img: string;
     price: number;
@@ -30,6 +30,6 @@ export interface fav{
 }
 
 export interface favContext {
-    fav: fav[];
-    setFav: Dispatch<React.SetStateAction<fav[]>>
+    fav: Crafts[];
+    setFav: Dispatch<React.SetStateAction<Crafts[]>>
 }

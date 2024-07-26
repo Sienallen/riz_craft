@@ -3,16 +3,14 @@ import './Product.css';
 import { productsList } from './ProductLists';
 import { FaStar, FaStarHalf } from 'react-icons/fa6';
 import { useParams } from 'react-router';
-import { CartContext } from '../Context';
+import { CartContext, useFavContext } from '../Context';
+import { Crafts } from '../Interface';
 
 const Product = () => {
+
   const params = useParams();
-  let itemData = null;
-  productsList.map((item) => {
-    if (params.path === item.path) {
-      itemData = item;
-    }
-  });
+  const path : string = `${params.path}`
+  const itemData = productsList[productsList.map(item => item.path).indexOf(path)]
 
   
 
@@ -44,6 +42,18 @@ const Product = () => {
     
   }
 
+  const favContext = useFavContext();
+
+  const addToFav = (itemData : Crafts) => {
+
+    const updatedFav = [...favContext.fav]
+    const index = updatedFav.map(item => item.path).indexOf(itemData.path)
+
+    if( index === -1 ){
+      favContext.setFav([...updatedFav, itemData])
+    }
+  }
+
   if (itemData !== null) {
     const path :string = itemData['path']
 
@@ -63,6 +73,8 @@ const Product = () => {
             <div className="product-header">
               <h2 className="product-title">{itemData['name']}</h2>
               <svg
+                onClick={() => addToFav(itemData)}
+                id={favContext.fav.map(item => item.path).indexOf(itemData.path) !== -1 ? 'in-fav' : ''}
                 width="28"
                 height="27"
                 viewBox="0 0 28 27"

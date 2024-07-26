@@ -6,6 +6,14 @@
 }
 
 #cart-title{
+    width: 80%;
+    margin: auto;
+    color: #ff5fa2;
+    border-bottom: #fcc89b solid thin;
+    padding: 1rem;
+}
+
+#cart-labels{
     display: flex;
     flex-direction: row;
     width: 80%;
@@ -16,22 +24,22 @@
     padding: 1rem;
 }
 
-#cart-title p{
+#cart-labels p{
     align-self: center;
 }
 
-#cart-title p:nth-child(1){
+#cart-labels p:nth-child(1){
     display: flex;
     flex-basis: 50%;
 }
 
-#cart-title p:nth-child(n+2){
+#cart-labels p:nth-child(n+2){
     display: flex;
     flex-basis: 22%;
     justify-content: center;
 }
 
-#cart-title p:nth-child(4){
+#cart-labels p:nth-child(4){
     flex-basis: 10%;
     justify-content: end;
     padding-right: 1rem;

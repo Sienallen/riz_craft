@@ -1,0 +1,21 @@
+#fav-card{
+    display: flex;
+    width: 80%;
+    margin: auto;
+    border-bottom: 1px solid #fcc89b;
+    padding: 2rem 1rem 2rem 1rem;
+    column-gap: 1rem;
+}
+
+#fav-info{
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+}
+
+#fav-edits{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 1rem;
+}
