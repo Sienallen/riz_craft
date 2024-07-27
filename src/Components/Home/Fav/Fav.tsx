@@ -22,6 +22,7 @@ export const Fav = () => {
 
     return (
       <>
+        <h1 id='fav-title'> Favorite Lists</h1>
         <h1 className='empty-list'>There is nothing in your favorites.</h1>
       </>
     )

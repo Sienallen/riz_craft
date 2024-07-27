@@ -63,6 +63,7 @@ const Cart = () => {
       }else{
         return (
           <>
+            <h1 id='cart-title'> Shopping Cart</h1>
             <h1 className='empty-list'>There is nothing in your cart.</h1>
           </>
         )
