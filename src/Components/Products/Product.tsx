@@ -7,55 +7,51 @@ import { CartContext, useFavContext } from '../Context';
 import { Crafts } from '../Interface';
 
 const Product = () => {
-
   const params = useParams();
-  const path : string = `${params.path}`
-  const itemData = productsList[productsList.map(item => item.path).indexOf(path)]
-
-  
+  const path: string = `${params.path}`;
+  const itemData =
+    productsList[productsList.map((item) => item.path).indexOf(path)];
 
   const cartContext = useContext(CartContext);
-  
-  const addToCart = (newPath : string, newAmount: number = 1) =>{
-    
-    if(cartContext !== undefined && cartContext.setCart !== undefined){
 
-      if(cartContext.cart !== undefined){
-        const updatedCart = [...cartContext.cart]
-        const index = updatedCart.map(item => item.path).indexOf(newPath)
-        if(index === -1){
-
-          cartContext.setCart([...updatedCart, {path : newPath, number : newAmount }])
-        }else{
+  const addToCart = (newPath: string, newAmount: number = 1) => {
+    if (cartContext !== undefined && cartContext.setCart !== undefined) {
+      if (cartContext.cart !== undefined) {
+        const updatedCart = [...cartContext.cart];
+        const index = updatedCart.map((item) => item.path).indexOf(newPath);
+        if (index === -1) {
+          cartContext.setCart([
+            ...updatedCart,
+            { path: newPath, number: newAmount },
+          ]);
+        } else {
           updatedCart[index].number++;
-          cartContext.setCart(updatedCart)
+          cartContext.setCart(updatedCart);
         }
-        
-
-      }else if(cartContext.cart === undefined || []){
-        const updatedCart = [{number : 1, path : newPath}]
-        cartContext.setCart(updatedCart)
+      } else if (cartContext.cart === undefined || []) {
+        const updatedCart = [{ number: 1, path: newPath }];
+        cartContext.setCart(updatedCart);
       }
-      
-      
     }
-    
-  }
+  };
 
   const favContext = useFavContext();
 
-  const addToFav = (itemData : Crafts) => {
+  const clickFav = (itemData: Crafts) => {
+    const updatedFav = [...favContext.fav];
+    const index = updatedFav.map((item) => item.path).indexOf(itemData.path);
 
-    const updatedFav = [...favContext.fav]
-    const index = updatedFav.map(item => item.path).indexOf(itemData.path)
-
-    if( index === -1 ){
-      favContext.setFav([...updatedFav, itemData])
+    if (index === -1) {
+      favContext.setFav([...updatedFav, itemData]);
+    } else {
+      updatedFav.splice(index, 1);
+      favContext.setFav(updatedFav);
+      console.log('deleted from fav');
     }
-  }
+  };
 
   if (itemData !== null) {
-    const path :string = itemData['path']
+    const path: string = itemData['path'];
 
     return (
       <>
@@ -73,8 +69,14 @@ const Product = () => {
             <div className="product-header">
               <h2 className="product-title">{itemData['name']}</h2>
               <svg
-                onClick={() => addToFav(itemData)}
-                id={favContext.fav.map(item => item.path).indexOf(itemData.path) !== -1 ? 'in-fav' : ''}
+                onClick={() => clickFav(itemData)}
+                id={
+                  favContext.fav
+                    .map((item) => item.path)
+                    .indexOf(itemData.path) !== -1
+                    ? 'in-fav'
+                    : ''
+                }
                 width="28"
                 height="27"
                 viewBox="0 0 28 27"
@@ -104,8 +106,11 @@ const Product = () => {
 
               <p className="product-description">{itemData['description']}</p>
               <p> 5-10 days shipping</p>
-              
-              <button className="gold-button product-button" onClick={() => addToCart(path)}>
+
+              <button
+                className="gold-button product-button"
+                onClick={() => addToCart(path)}
+              >
                 Add to cart
               </button>
             </div>
