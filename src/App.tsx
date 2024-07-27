@@ -5,7 +5,7 @@ import { Outlet } from 'react-router';
 import { useState } from 'react';
 import { Cart, Crafts } from './Components/Interface';
 import { CartContext, FavContext } from './Components/Context';
-import plaidBag from './assets/Red Bag.jpg';
+/* import plaidBag from './assets/Red Bag.jpg'; */
 
 function App() {
   const [cart, setCart] = useState<Cart[]>([
@@ -16,14 +16,14 @@ function App() {
   ]);
 
   const [fav, setFav] = useState<Crafts[]>([
-    {
+    /* {
       name: 'Plaid Bag',
       img: plaidBag,
       price: 33.99,
       rating: 4.5,
       description: 'A red and white plaid bag with 2 red bows.',
       path: 'plaidBag',
-    },
+    }, */
   ]);
 
   return (
