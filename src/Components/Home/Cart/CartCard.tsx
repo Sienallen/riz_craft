@@ -1,6 +1,5 @@
-import { CartContext, useCartContext } from '../../Context';
+import { useCartContext } from '../../Context';
 import { cartList } from '../../Interface';
-import { productsList } from '../../Products/ProductLists';
 import './CartCart.css';
 
 interface props {
