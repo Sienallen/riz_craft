@@ -1,24 +1,30 @@
 import './ProductCard.css';
 import { Link } from 'react-router-dom';
 
-interface props {
+interface product {
   name: string;
   img: string;
   description: string;
   path: string;
 }
 
-const ProductCard = ({ name, img, description, path }: props) => {
-  
+interface prop {
+  product: product;
+}
+
+const ProductCard = ({ product }: prop) => {
   return (
     <>
       <div className="product-card">
-        <img src={img} alt={name} />
+        <img
+          src={import.meta.env.VITE_API_URL + product.img}
+          alt={product.name}
+        />
         <div className="product-cardBody">
-          <h4>{name}</h4>
+          <h4>{product.name}</h4>
           <div className="product-cardDescript">
-            <p>{description}</p>
-            <Link to={path} className=" gold-button view">
+            <p>{product.description}</p>
+            <Link to={product.path} className=" gold-button view">
               View
               <svg
                 xmlns="http://www.w3.org/2000/svg"

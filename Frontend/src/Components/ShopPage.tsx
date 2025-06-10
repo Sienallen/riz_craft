@@ -1,16 +1,25 @@
-import { useState } from 'react';
-import { productsList } from './Products/ProductLists';
+import { useEffect, useState } from 'react';
 import './ShopPage.css';
 import ProductCard from './Products/ProductCard';
+import AxiosInstance from '../api';
 
 const ShopPage = () => {
   const [q, setQ] = useState('');
+  const [productItem, setProductItem] = useState([]);
 
-  const items = productsList.filter((item) => {
-    if (item.name.toLowerCase().includes(q)) {
-      return item;
-    }
-  });
+  const getProduct = () => {
+    AxiosInstance.get('/api/products/')
+      .then((res) => res.data)
+      .then((data) => {
+        setProductItem(data);
+        console.log(data);
+      })
+      .catch((err) => alert(err));
+  };
+
+  useEffect(() => {
+    getProduct();
+  }, []);
 
   return (
     <>
@@ -27,14 +36,8 @@ const ShopPage = () => {
             />
           </div>
           <div className="product-grid">
-            {items.map((item) => (
-              <ProductCard
-                name={item.name}
-                img={item.img}
-                description={item.description}
-                path={item.path}
-                key={'shopPage' + item.name}
-              />
+            {productItem.map((item) => (
+              <ProductCard product={item} />
             ))}
           </div>
         </div>
