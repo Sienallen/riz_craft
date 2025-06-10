@@ -1,3 +1,15 @@
 from django.db import models
 
 # Create your models here.
+class Product(models.Model):
+    name = models.CharField(max_length=100)
+    img = models.ImageField(upload_to='images/', default = "No Image")
+    price = models.DecimalField(max_digits=5, decimal_places=2)
+    rating = models.DecimalField(max_digits=5, decimal_places = 2)
+    description = models.TextField()
+    path = models.CharField(max_length=100)
+    created_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+
