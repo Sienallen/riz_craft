@@ -54,6 +54,15 @@ header {
   border-radius: 2rem;
 }
 
+.icon-button {
+  height: 35px;
+  width: 35px;
+}
+
+.profile {
+  color: #ff5fa2;
+}
+
 .active {
   background-color: #fcc89b;
   border-radius: 2rem;
@@ -61,10 +70,9 @@ header {
 
 #nav-links .icons {
   display: flex;
-  width: 6rem;
   justify-content: space-between;
   align-items: center;
-
+  column-gap: 0.6rem;
 }
 
 .icon {

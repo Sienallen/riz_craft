@@ -8,6 +8,7 @@ import Contacts from '../Contacts/Contacts';
 import Product from '../Products/Product';
 import Cart from '../Home/Cart/Cart';
 import { Fav } from '../Home/Fav/Fav';
+import Login from '../Accounts/Login';
 
 const routes: RouteObject[] = [
   {
@@ -32,21 +33,25 @@ const routes: RouteObject[] = [
         path: 'contactsPage',
         element: <Contacts />,
       },
-      
+
       {
         path: 'cartPage',
-        element: <Cart/>,
+        element: <Cart />,
       },
 
       {
         path: 'favPage',
-        element: <Fav/>
+        element: <Fav />,
       },
 
       {
         path: 'shopPage/:path',
         element: <Product />,
         errorElement: <div>Product does not exist.</div>,
+      },
+      {
+        path: 'Login',
+        element: <Login />,
       },
     ],
   },

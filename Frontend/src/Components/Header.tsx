@@ -1,4 +1,5 @@
 import { RxHamburgerMenu } from 'react-icons/rx';
+import { CgProfile } from 'react-icons/cg';
 import './Header.css';
 import { Link, NavLink } from 'react-router-dom';
 import { IoClose } from 'react-icons/io5';
@@ -49,6 +50,7 @@ const Header = () => {
           <div className="icons">
             <Link to={'favPage'}>
               <svg
+                className="icon-button"
                 xmlns="http://www.w3.org/2000/svg"
                 height="40"
                 viewBox="0 -960 960 960"
@@ -62,6 +64,7 @@ const Header = () => {
             </Link>
             <Link to={'cartPage'}>
               <svg
+                className="icon-button"
                 width="40"
                 height="40"
                 viewBox="0 0 46 47"
@@ -73,6 +76,9 @@ const Header = () => {
                   className="icon"
                 />
               </svg>
+            </Link>
+            <Link to="Login">
+              <CgProfile className="icon-button profile" />
             </Link>
           </div>
         </div>
