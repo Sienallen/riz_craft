@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 interface prop {
@@ -7,11 +6,12 @@ interface prop {
 }
 
 const DropDownProfile = ({ route, method }: prop) => {
+  const name = method === 'login' ? 'Sign in' : 'Sign out';
   return (
     <div>
       <p>Profile</p>
       <p>Settings</p>
-      <Link to="/Login">Sign in </Link>
+      {name === 'Sign in' ? <Link to="/Login">{name} </Link> : name}
     </div>
   );
 };
