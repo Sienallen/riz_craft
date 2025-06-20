@@ -79,6 +79,10 @@ header {
   fill: #ff5fa2;
 }
 
+#profile-dropdown {
+  position: relative;
+}
+
 #hamburger {
   height: 2.2rem;
   width: 2.2rem;

@@ -9,6 +9,7 @@ import Product from '../Products/Product';
 import Cart from '../Home/Cart/Cart';
 import { Fav } from '../Home/Fav/Fav';
 import Login from '../Accounts/Login';
+import Register from '../Accounts/Register';
 
 const routes: RouteObject[] = [
   {
@@ -50,8 +51,12 @@ const routes: RouteObject[] = [
         errorElement: <div>Product does not exist.</div>,
       },
       {
-        path: 'Login',
+        path: 'login',
         element: <Login />,
+      },
+      {
+        path: 'register',
+        element: <Register />,
       },
     ],
   },

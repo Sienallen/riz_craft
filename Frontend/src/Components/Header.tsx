@@ -3,8 +3,16 @@ import { CgProfile } from 'react-icons/cg';
 import './Header.css';
 import { Link, NavLink } from 'react-router-dom';
 import { IoClose } from 'react-icons/io5';
+import DropDownProfile from './Dropdown/DropDownProfile';
+import { useState } from 'react';
 
 const Header = () => {
+  const [dropDown, setDropDown] = useState<boolean>(false);
+
+  const openDropDown = () => {
+    setDropDown(!dropDown);
+  };
+
   return (
     <header>
       <div className="media-header">
@@ -77,9 +85,17 @@ const Header = () => {
                 />
               </svg>
             </Link>
-            <Link to="Login">
-              <CgProfile className="icon-button profile" />
-            </Link>
+            <div id="profile-dropdown">
+              <div onClick={openDropDown}>
+                <CgProfile className="icon-button profile" />
+              </div>
+
+              <DropDownProfile
+                method="login"
+                setDropDown={setDropDown}
+                dropDown={dropDown}
+              />
+            </div>
           </div>
         </div>
       </nav>

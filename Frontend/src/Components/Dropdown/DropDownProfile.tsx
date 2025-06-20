@@ -1,17 +1,30 @@
 import { Link } from 'react-router-dom';
+import './DropDownProfile.css';
+import { Dispatch, SetStateAction } from 'react';
 
 interface prop {
-  route: string;
+  /*   route: string; */
   method: string;
+  setDropDown: Dispatch<SetStateAction<boolean>>;
+  dropDown: boolean;
 }
 
-const DropDownProfile = ({ route, method }: prop) => {
+const DropDownProfile = ({ method, setDropDown, dropDown }: prop) => {
   const name = method === 'login' ? 'Sign in' : 'Sign out';
+
   return (
-    <div>
+    <div id="drop-down-menu" className={dropDown ? 'fade-in' : 'fade-out'}>
       <p>Profile</p>
       <p>Settings</p>
-      {name === 'Sign in' ? <Link to="/Login">{name} </Link> : name}
+      <p>
+        {name === 'Sign in' ? (
+          <Link to="/login" onClick={() => setDropDown(false)}>
+            {name}{' '}
+          </Link>
+        ) : (
+          name
+        )}
+      </p>
     </div>
   );
 };
