@@ -9,9 +9,7 @@ import Product from '../Products/Product';
 import Cart from '../Home/Cart/Cart';
 import { Fav } from '../Home/Fav/Fav';
 import Login from '../Accounts/Login';
-import Register from '../Accounts/Register';
-import Logout from '../Accounts/Logout';
-
+import { Logout, RegisterAndLogout } from '../Accounts/Logout';
 const routes: RouteObject[] = [
   {
     path: '/',
@@ -57,7 +55,7 @@ const routes: RouteObject[] = [
       },
       {
         path: 'register',
-        element: <Register />,
+        element: <RegisterAndLogout />,
       },
       {
         path: 'logout',
