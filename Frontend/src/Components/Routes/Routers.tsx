@@ -10,6 +10,7 @@ import Cart from '../Home/Cart/Cart';
 import { Fav } from '../Home/Fav/Fav';
 import Login from '../Accounts/Login';
 import Register from '../Accounts/Register';
+import Logout from '../Accounts/Logout';
 
 const routes: RouteObject[] = [
   {
@@ -57,6 +58,10 @@ const routes: RouteObject[] = [
       {
         path: 'register',
         element: <Register />,
+      },
+      {
+        path: 'logout',
+        element: <Logout />,
       },
     ],
   },
