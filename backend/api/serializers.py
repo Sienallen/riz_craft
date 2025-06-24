@@ -26,3 +26,9 @@ class UserCartSerializer(serializers.ModelSerializer):
         model = Product
         fields = '__all__'
         extra_kwargs = {"author": {"read_only": True}}
+
+class UserFavSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = '__all__'
+        extra_kwargs = {'author': {"read_only" : True}}
