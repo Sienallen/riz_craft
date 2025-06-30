@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import './ShopPage.css';
 import ProductCard from './Products/ProductCard';
-import AxiosInstance from '../api';
+import { PublicAxiosInstance } from '../api';
 
 const ShopPage = () => {
   const [q, setQ] = useState('');
   const [productItem, setProductItem] = useState([]);
 
   const getProduct = () => {
-    AxiosInstance.get('/api/products/')
+    PublicAxiosInstance.get('/api/products/')
       .then((res) => res.data)
       .then((data) => {
         setProductItem(data);

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
-import AxiosInstance from '../../api';
+import { PrivateAxiosInstance } from '../../api';
 import { ACCESS_TOKEN, REFRESH_TOKEN } from '../../constants';
 import LoadingIndicator from './LoadingIndicator';
 
@@ -21,7 +21,10 @@ const Forms = ({ route, method }: props) => {
     e.preventDefault();
 
     try {
-      const res = await AxiosInstance.post(route, { username, password });
+      const res = await PrivateAxiosInstance.post(route, {
+        username,
+        password,
+      });
       if (method === 'login') {
         localStorage.setItem(ACCESS_TOKEN, res.data.access);
         localStorage.setItem(REFRESH_TOKEN, res.data.refresh);

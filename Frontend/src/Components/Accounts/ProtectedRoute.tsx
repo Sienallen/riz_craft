@@ -1,6 +1,6 @@
 import { Navigate } from 'react-router';
 import { jwtDecode } from 'jwt-decode';
-import AxiosInstance from '../../api';
+import { PrivateAxiosInstance } from '../../api';
 import { REFRESH_TOKEN, ACCESS_TOKEN } from '../../constants';
 import { useState, useEffect } from 'react';
 
@@ -18,7 +18,7 @@ const ProtectedRoute = ({ children }: Props) => {
   const refreshToken = async () => {
     const refreshToken = localStorage.getItem(REFRESH_TOKEN);
     try {
-      const res = await AxiosInstance.post('/api/token/refresh/', {
+      const res = await PrivateAxiosInstance.post('/api/token/refresh/', {
         refresh: refreshToken,
       });
       if (res.status === 200) {
