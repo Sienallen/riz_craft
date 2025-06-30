@@ -10,6 +10,7 @@ import Cart from '../Home/Cart/Cart';
 import { Fav } from '../Home/Fav/Fav';
 import Login from '../Accounts/Login';
 import { Logout, RegisterAndLogout } from '../Accounts/Logout';
+import ProtectedRoute from '../Accounts/ProtectedRoute';
 const routes: RouteObject[] = [
   {
     path: '/',
@@ -41,7 +42,11 @@ const routes: RouteObject[] = [
 
       {
         path: 'favPage',
-        element: <Fav />,
+        element: (
+          <ProtectedRoute>
+            <Fav />
+          </ProtectedRoute>
+        ),
       },
 
       {

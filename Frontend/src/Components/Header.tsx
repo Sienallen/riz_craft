@@ -90,11 +90,7 @@ const Header = () => {
                 <CgProfile className="icon-button profile" />
               </div>
 
-              <DropDownProfile
-                method="login"
-                setDropDown={setDropDown}
-                dropDown={dropDown}
-              />
+              <DropDownProfile setDropDown={setDropDown} dropDown={dropDown} />
             </div>
           </div>
         </div>
