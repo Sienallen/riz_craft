@@ -4,6 +4,7 @@ import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { ACCESS_TOKEN, REFRESH_TOKEN } from '../../constants';
 import AxiosInstance from '../../api';
 import { jwtDecode } from 'jwt-decode';
+import isAuthenticated from '../Accounts/isAuthenticated';
 
 interface prop {
   /*   route: string; */
@@ -13,6 +14,14 @@ interface prop {
 
 const DropDownProfile = ({ setDropDown, dropDown }: prop) => {
   const [isAuth, setIsAuth] = useState<boolean | null>(null);
+
+  /*  useEffect(() => {
+    const checkAuth = async () => {
+      const result = await isAuthenticated();
+      setIsAuth(result);
+    };
+    checkAuth();
+  }, [dropDown]); */
 
   useEffect(() => {
     auth().catch(() => setIsAuth(false));

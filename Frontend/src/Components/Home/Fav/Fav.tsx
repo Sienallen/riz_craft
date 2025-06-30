@@ -7,7 +7,7 @@ import AxiosInstance from '../../../api';
 export const Fav = () => {
   const favContext = useFavContext();
 
-  const [favItem, setFavItem] = useState([]);
+  /*   const [favItem, setFavItem] = useState([]);
 
   const getFavorite = () => {
     AxiosInstance.get('/api/products/')
@@ -22,7 +22,7 @@ export const Fav = () => {
   useEffect(() => {
     getFavorite();
   }, []);
-
+ */
   if (favContext.fav.length !== 0) {
     return (
       <>
