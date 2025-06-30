@@ -1,9 +1,6 @@
 import { Link } from 'react-router-dom';
 import './DropDownProfile.css';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { ACCESS_TOKEN, REFRESH_TOKEN } from '../../constants';
-import AxiosInstance from '../../api';
-import { jwtDecode } from 'jwt-decode';
 import isAuthenticated from '../Accounts/isAuthenticated';
 
 interface prop {
