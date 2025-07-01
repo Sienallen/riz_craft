@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import Product
+from .models import Product, Fav
 
 #Serializer for the User
 class UserSerializer(serializers.ModelSerializer):
@@ -28,7 +28,9 @@ class UserCartSerializer(serializers.ModelSerializer):
         extra_kwargs = {"author": {"read_only": True}}
 
 class UserFavSerializer(serializers.ModelSerializer):
+    product = ProductSerializer(read_only=True)
+
     class Meta:
-        model = Product
-        fields = '__all__'
-        extra_kwargs = {'author': {"read_only" : True}}
+        model = Fav
+        fields = ["product"]
+        extra_kwargs = {'user': {"read_only" : True}}

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from rest_framework import generics
-from .models import Product
+from .models import Product, Fav
 from .serializers import ProductSerializer, UserSerializer, UserCartSerializer, UserFavSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny, BasePermission, SAFE_METHODS
 from rest_framework.response import Response
@@ -48,17 +48,17 @@ class UserCartDelete(generics.DestroyAPIView):
         user = self.request.user
         return Product.objects.filter(author=user)
 
-class UserFavCreate(generics.DestroyAPIView):
+class UserFavCreate(generics.ListCreateAPIView):
     serializer_class = UserFavSerializer
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         user = self.request.user
-        return Product.objetcts.filter(author=user)
+        return Fav.objects.filter(user=user)
 
     def perform_create(self, serializer):
         if serializer.is_valid():
-            serializer.save(author=self.request.user)
+            serializer.save(user=self.request.user)
         else:
             print(serializer.errors)
 
