@@ -6,12 +6,10 @@ import { PrivateAxiosInstance } from '../../../api';
 import { Product } from '../../Interface';
 
 interface Fav {
-  Product: Product;
+  product: Product;
 }
 
 export const Fav = () => {
-  const favContext = useFavContext();
-
   const [favItem, setFavItem] = useState<Fav[]>([]);
 
   const getFavorite = () => {
@@ -27,16 +25,13 @@ export const Fav = () => {
   useEffect(() => {
     getFavorite();
   }, []);
-  favItem.map((item) => {
-    console.log(item);
-  });
-  if (favContext.fav.length !== 0) {
+
+  if (favItem.length !== 0) {
     return (
       <>
         <h1 id="fav-title"> Favorite Lists</h1>
-
         {favItem.map((item) => (
-          <FavCard item={item.Product} />
+          <FavCard item={item.product} />
         ))}
       </>
     );

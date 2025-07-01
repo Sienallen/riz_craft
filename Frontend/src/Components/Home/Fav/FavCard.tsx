@@ -11,9 +11,10 @@ export const FavCard = ({ item }: props) => {
   const cartContext = useCartContext();
   const favContext = useFavContext();
 
-  console.log(item + 'card');
+  console.log(item);
+  console.log('the item above ');
 
-  const addToCart = (newPath: string, newAmount: number = 1) => {
+  /*   const addToCart = (newPath: string, newAmount: number = 1) => {
     if (cartContext !== undefined && cartContext.setCart !== undefined) {
       if (cartContext.cart !== undefined) {
         const updatedCart = [...cartContext.cart];
@@ -39,12 +40,16 @@ export const FavCard = ({ item }: props) => {
     const index = updatedFav.map((item) => item.path).indexOf(item.path);
     updatedFav.splice(index, 1);
     favContext.setFav(updatedFav);
-  };
+  }; */
 
   return (
     <>
       <div id="fav-card">
-        <img src={item.img} alt={item.name} className="cart-img"></img>
+        <img
+          src={import.meta.env.VITE_API_URL + item.img}
+          alt={item.name}
+          className="cart-img"
+        />
 
         <div id="fav-info">
           <div>
@@ -66,7 +71,7 @@ export const FavCard = ({ item }: props) => {
             <p>${item.price}</p>
           </div>
 
-          <div id="fav-edits">
+          {/*           <div id="fav-edits">
             <button
               className="gold-button"
               onClick={() => addToCart(item.path)}
@@ -77,7 +82,7 @@ export const FavCard = ({ item }: props) => {
             <button className="gold-button" onClick={removeFav}>
               Remove
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
