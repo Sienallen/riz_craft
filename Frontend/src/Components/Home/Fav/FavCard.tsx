@@ -1,18 +1,17 @@
 import './FavCard.css';
 import { Product } from '../../Interface';
 import { FaStar, FaStarHalf } from 'react-icons/fa6';
-import { useCartContext, useFavContext } from '../../Context';
+//import { useCartContext, useFavContext } from '../../Context';
 
 interface props {
   item: Product;
 }
 
 export const FavCard = ({ item }: props) => {
-  const cartContext = useCartContext();
-  const favContext = useFavContext();
+  //const cartContext = useCartContext();
+  //const favContext = useFavContext();
 
-  console.log(item);
-  console.log('the item above ');
+  //Need to use make tranfer cart into the backend
 
   /*   const addToCart = (newPath: string, newAmount: number = 1) => {
     if (cartContext !== undefined && cartContext.setCart !== undefined) {
@@ -35,6 +34,8 @@ export const FavCard = ({ item }: props) => {
     }
   };
 
+  //use the delete view to delete a favortie product
+  
   const removeFav = () => {
     const updatedFav = [...favContext.fav];
     const index = updatedFav.map((item) => item.path).indexOf(item.path);
@@ -45,11 +46,7 @@ export const FavCard = ({ item }: props) => {
   return (
     <>
       <div id="fav-card">
-        <img
-          src={import.meta.env.VITE_API_URL + item.img}
-          alt={item.name}
-          className="cart-img"
-        />
+        <img src={item.img} alt={item.name} className="cart-img" />
 
         <div id="fav-info">
           <div>
