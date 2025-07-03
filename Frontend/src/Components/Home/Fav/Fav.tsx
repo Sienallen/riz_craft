@@ -7,6 +7,7 @@ import { Product } from '../../Interface';
 
 interface Fav {
   product: Product;
+  id: string;
 }
 
 export const Fav = () => {
@@ -20,6 +21,10 @@ export const Fav = () => {
         console.log(data);
       })
       .catch((err) => alert(err));
+  };
+
+  const deleteFav = () => {
+    PrivateAxiosInstance.delete('/api/fav/delete/${id}');
   };
 
   useEffect(() => {

@@ -32,5 +32,5 @@ class UserFavSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Fav
-        fields = ["product"]
+        fields = ["product", "id"]
         extra_kwargs = {'user': {"read_only" : True}}
