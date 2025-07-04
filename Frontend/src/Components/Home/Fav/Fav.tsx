@@ -23,8 +23,18 @@ export const Fav = () => {
       .catch((err) => alert(err));
   };
 
-  const deleteFav = () => {
-    PrivateAxiosInstance.delete('/api/fav/delete/${id}');
+  const removeFav = (id: string) => {
+    PrivateAxiosInstance.delete(`/api/fav/delete/${id}/`)
+      .then((res) => {
+        if (res.status === 204) alert('Fav product!');
+        else alert('Failed to remove product');
+        getFavorite();
+      })
+      .catch((error) => alert(error));
+  };
+
+  const addToCart = () => {
+    console.log('add to cart function');
   };
 
   useEffect(() => {
@@ -36,7 +46,13 @@ export const Fav = () => {
       <>
         <h1 id="fav-title"> Favorite Lists</h1>
         {favItem.map((item) => (
-          <FavCard item={item.product} />
+          <FavCard
+            item={item.product}
+            onRemove={removeFav}
+            addToCart={addToCart}
+            itemID={item.id}
+            key={item.id}
+          />
         ))}
       </>
     );

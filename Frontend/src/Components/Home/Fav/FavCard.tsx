@@ -5,44 +5,12 @@ import { FaStar, FaStarHalf } from 'react-icons/fa6';
 
 interface props {
   item: Product;
+  onRemove: (id: string) => void;
+  addToCart: () => void;
+  itemID: string;
 }
 
-export const FavCard = ({ item }: props) => {
-  //const cartContext = useCartContext();
-  //const favContext = useFavContext();
-
-  //Need to use make tranfer cart into the backend
-
-  /*   const addToCart = (newPath: string, newAmount: number = 1) => {
-    if (cartContext !== undefined && cartContext.setCart !== undefined) {
-      if (cartContext.cart !== undefined) {
-        const updatedCart = [...cartContext.cart];
-        const index = updatedCart.map((item) => item.path).indexOf(newPath);
-        if (index === -1) {
-          cartContext.setCart([
-            ...updatedCart,
-            { path: newPath, number: newAmount },
-          ]);
-        } else {
-          updatedCart[index].number++;
-          cartContext.setCart(updatedCart);
-        }
-      } else if (cartContext.cart === undefined || []) {
-        const updatedCart = [{ number: 1, path: newPath }];
-        cartContext.setCart(updatedCart);
-      }
-    }
-  };
-
-  //use the delete view to delete a favortie product
-  
-  const removeFav = () => {
-    const updatedFav = [...favContext.fav];
-    const index = updatedFav.map((item) => item.path).indexOf(item.path);
-    updatedFav.splice(index, 1);
-    favContext.setFav(updatedFav);
-  }; */
-
+export const FavCard = ({ item, onRemove, addToCart, itemID }: props) => {
   return (
     <>
       <div id="fav-card">
@@ -68,18 +36,15 @@ export const FavCard = ({ item }: props) => {
             <p>${item.price}</p>
           </div>
 
-          {/*           <div id="fav-edits">
-            <button
-              className="gold-button"
-              onClick={() => addToCart(item.path)}
-            >
+          <div id="fav-edits">
+            <button className="gold-button" onClick={() => addToCart()}>
               Add to cart
             </button>
 
-            <button className="gold-button" onClick={removeFav}>
+            <button className="gold-button" onClick={() => onRemove(itemID)}>
               Remove
             </button>
-          </div> */}
+          </div>
         </div>
       </div>
     </>

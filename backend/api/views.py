@@ -68,4 +68,4 @@ class UserFavDelete(generics.DestroyAPIView):
 
     def get_queryset(self):
         user = self.request.user
-        return Product.objects.filter(author=user)
+        return Fav.objects.filter(user=user)
