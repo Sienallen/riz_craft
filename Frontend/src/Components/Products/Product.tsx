@@ -1,12 +1,13 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import './Product.css';
 import { productsList } from './ProductLists';
 import { FaStar, FaStarHalf } from 'react-icons/fa6';
-import { useParams } from 'react-router';
+import { Navigate, useParams } from 'react-router';
 import { CartContext, useFavContext } from '../Context';
-import { Crafts } from '../Interface';
+import { Product } from '../Interface';
+import isAuthenticated from '../Accounts/isAuthenticated';
 
-const Product = () => {
+const ProductPage = () => {
   const params = useParams();
   const path: string = `${params.path}`;
   const itemData =
@@ -37,7 +38,7 @@ const Product = () => {
 
   const favContext = useFavContext();
 
-  const clickFav = (itemData: Crafts) => {
+  const clickFav = (itemData: Product) => {
     const updatedFav = [...favContext.fav];
     const index = updatedFav.map((item) => item.path).indexOf(itemData.path);
 
@@ -49,6 +50,18 @@ const Product = () => {
       console.log('deleted from fav');
     }
   };
+
+  // ***** New function to transition project to backend ******
+  const addFav = async () => {
+    const result = await isAuthenticated();
+
+    if (result) {
+    } else {
+      return <Navigate to={'login'} />;
+    }
+  };
+
+  // ***** EOF function to transition project to backend ******
 
   if (itemData !== null) {
     const path: string = itemData['path'];
@@ -121,4 +134,4 @@ const Product = () => {
   }
 };
 
-export default Product;
+export default ProductPage;

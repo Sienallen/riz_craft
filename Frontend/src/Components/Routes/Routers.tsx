@@ -5,7 +5,7 @@ import ShopPage from '../ShopPage';
 import Home from '../Home/Home';
 import About from '../About/About';
 import Contacts from '../Contacts/Contacts';
-import Product from '../Products/Product';
+import ProductPage from '../Products/Product';
 import Cart from '../Home/Cart/Cart';
 import { Fav } from '../Home/Fav/Fav';
 import Login from '../Accounts/Login';
@@ -51,7 +51,7 @@ const routes: RouteObject[] = [
 
       {
         path: 'shopPage/:path',
-        element: <Product />,
+        element: <ProductPage />,
         errorElement: <div>Product does not exist.</div>,
       },
       {
