@@ -6,6 +6,7 @@ import { Navigate, useParams } from 'react-router';
 import { CartContext, useFavContext } from '../Context';
 import { Product } from '../Interface';
 import isAuthenticated from '../Accounts/isAuthenticated';
+import { PrivateAxiosInstance } from '../../api';
 
 const ProductPage = () => {
   const params = useParams();
@@ -56,6 +57,7 @@ const ProductPage = () => {
     const result = await isAuthenticated();
 
     if (result) {
+      PrivateAxiosInstance.post('api/fav/');
     } else {
       return <Navigate to={'login'} />;
     }

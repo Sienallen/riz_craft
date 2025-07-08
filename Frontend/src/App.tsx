@@ -3,7 +3,7 @@ import Header from './Components/Header';
 import Footer from './Components/Footer';
 import { Outlet } from 'react-router';
 import { useState } from 'react';
-import { Cart, Crafts } from './Components/Interface';
+import { Cart, Product } from './Components/Interface';
 import { CartContext, FavContext } from './Components/Context';
 /* import plaidBag from './assets/Red Bag.jpg'; */
 
@@ -15,7 +15,7 @@ function App() {
   } */
   ]);
 
-  const [fav, setFav] = useState<Crafts[]>([
+  const [fav, setFav] = useState<Product[]>([
     /* {
       name: 'Plaid Bag',
       img: plaidBag,
