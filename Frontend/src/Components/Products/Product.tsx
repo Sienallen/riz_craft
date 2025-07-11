@@ -6,7 +6,7 @@ import { Navigate, useParams } from 'react-router';
 import { CartContext, useFavContext } from '../Context';
 import { Product } from '../Interface';
 import isAuthenticated from '../Accounts/isAuthenticated';
-import { PrivateAxiosInstance } from '../../api';
+import { PrivateAxiosInstance, PublicAxiosInstance } from '../../api';
 
 const ProductPage = () => {
   const params = useParams();
@@ -39,7 +39,7 @@ const ProductPage = () => {
 
   const favContext = useFavContext();
 
-  const clickFav = (itemData: Product) => {
+  /* const clickFav = (itemData: Product) => {
     const updatedFav = [...favContext.fav];
     const index = updatedFav.map((item) => item.path).indexOf(itemData.path);
 
@@ -50,18 +50,31 @@ const ProductPage = () => {
       favContext.setFav(updatedFav);
       console.log('deleted from fav');
     }
-  };
+  }; */
 
   // ***** New function to transition project to backend ******
-  const addFav = async () => {
+  const clickFav = async (itemData: Product) => {
     const result = await isAuthenticated();
-
-    if (result) {
-      PrivateAxiosInstance.post('api/fav/');
-    } else {
+    if (!result) {
       return <Navigate to={'login'} />;
     }
+    const [index, setIndex] = useState();
+
+    PublicAxiosInstance.get('/api/products/')
+      .then((res) => res.data)
+      .then((data) => {
+        setIndex(data.map((item: Product) => item.path).indexOf(itemData.path));
+        console.log(index);
+      })
+      .catch((err) => alert(err));
+
+    if (index === -1) {
+      console.log('item is not in favorite');
+    } else {
+      console.log('item is in favorite');
+    }
   };
+  /* PrivateAxiosInstance.post('api/fav/'); */
 
   // ***** EOF function to transition project to backend ******
 
