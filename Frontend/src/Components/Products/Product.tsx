@@ -1,18 +1,50 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import './Product.css';
-import { productsList } from './ProductLists';
 import { FaStar, FaStarHalf } from 'react-icons/fa6';
-import { Navigate, useParams } from 'react-router';
-import { CartContext, useFavContext } from '../Context';
-import { Product } from '../Interface';
+import { useNavigate, useParams } from 'react-router';
+import { CartContext } from '../Context';
+import { Fav, Product } from '../Interface';
 import isAuthenticated from '../Accounts/isAuthenticated';
 import { PrivateAxiosInstance, PublicAxiosInstance } from '../../api';
 
 const ProductPage = () => {
   const params = useParams();
   const path: string = `${params.path}`;
-  const itemData =
-    productsList[productsList.map((item) => item.path).indexOf(path)];
+  const navigate = useNavigate();
+  const [favItem, setFavItem] = useState<Fav | undefined>();
+  const [itemData, setItemData] = useState<Product>();
+  const [isAuth, setIsAuth] = useState<boolean | null>(null);
+
+  //Fetches for the list of products and gets the data that matches the path of the page.
+  const getProduct = () => {
+    PublicAxiosInstance.get('/api/products/')
+      .then((res) => res.data)
+      .then((data) => {
+        setItemData(data.find((item: Product) => item.path === path));
+      })
+      .catch((err) => alert(err));
+  };
+
+  const checkFav = () => {
+    PrivateAxiosInstance.get<Fav[]>('/api/fav/')
+      .then((res) => res.data)
+      .then((data) => {
+        setFavItem(data.find((item) => item.product.path === path));
+      })
+      .catch((err) => alert(err));
+  };
+
+  useEffect(() => {
+    getProduct();
+    const checkAuth = async () => {
+      const result = await isAuthenticated();
+      setIsAuth(result);
+      if (result) {
+        checkFav();
+      }
+    };
+    checkAuth();
+  }, []);
 
   const cartContext = useContext(CartContext);
 
@@ -37,49 +69,32 @@ const ProductPage = () => {
     }
   };
 
-  const favContext = useFavContext();
-
-  /* const clickFav = (itemData: Product) => {
-    const updatedFav = [...favContext.fav];
-    const index = updatedFav.map((item) => item.path).indexOf(itemData.path);
-
-    if (index === -1) {
-      favContext.setFav([...updatedFav, itemData]);
-    } else {
-      updatedFav.splice(index, 1);
-      favContext.setFav(updatedFav);
-      console.log('deleted from fav');
-    }
-  }; */
-
   // ***** New function to transition project to backend ******
-  const clickFav = async (itemData: Product) => {
-    const result = await isAuthenticated();
-    if (!result) {
-      return <Navigate to={'login'} />;
-    }
-    const [index, setIndex] = useState();
-
-    PublicAxiosInstance.get('/api/products/')
-      .then((res) => res.data)
-      .then((data) => {
-        setIndex(data.map((item: Product) => item.path).indexOf(itemData.path));
-        console.log(index);
-      })
-      .catch((err) => alert(err));
-
-    if (index === -1) {
-      console.log('item is not in favorite');
+  const clickFav = async (itemData: Product, favItem: Fav | undefined) => {
+    if (favItem) {
+      await PrivateAxiosInstance.delete(`/api/fav/delete/${favItem.id}/`)
+        .then((res) => {
+          if (res.status === 204) {
+            alert('Removed from favorite!');
+          } else alert('Failed to remove product');
+        })
+        .catch((error) => alert(error));
     } else {
-      console.log('item is in favorite');
+      /* Sending a Post to add itemdata to the backend */
+      await PrivateAxiosInstance.post('api/fav/', { product_id: itemData.id })
+        .then((res) => {
+          if (res.status == 201) {
+            alert('Added to favorite!');
+          } else alert('Failed to add.');
+        })
+        .catch((err) => alert(err));
     }
+    await checkFav();
   };
-  /* PrivateAxiosInstance.post('api/fav/'); */
 
   // ***** EOF function to transition project to backend ******
-
-  if (itemData !== null) {
-    const path: string = itemData['path'];
+  if (itemData !== undefined) {
+    const path: string = itemData.path;
 
     return (
       <>
@@ -89,22 +104,20 @@ const ProductPage = () => {
 
         <div className="aboutItem">
           <img
-            src={itemData['img']}
-            alt={itemData['name']}
+            src={import.meta.env.VITE_API_URL + itemData.img}
+            alt={itemData.name}
             className="productImg"
           />
           <section className="productData">
             <div className="product-header">
-              <h2 className="product-title">{itemData['name']}</h2>
+              <h2 className="product-title">{itemData.name}</h2>
+              {/* Displays the favorite icon */}
               <svg
-                onClick={() => clickFav(itemData)}
-                id={
-                  favContext.fav
-                    .map((item) => item.path)
-                    .indexOf(itemData.path) !== -1
-                    ? 'in-fav'
-                    : ''
-                }
+                onClick={() => {
+                  if (!isAuth) navigate('/login');
+                  clickFav(itemData, favItem);
+                }}
+                id={!!favItem ? 'in-fav' : ''}
                 width="28"
                 height="27"
                 viewBox="0 0 28 27"
@@ -116,23 +129,21 @@ const ProductPage = () => {
 
             <div className="product-body">
               <div>
-                <p className="product-price">${itemData['price']}</p>
+                <p className="product-price">${itemData.price}</p>
                 <div className="product-rating">
-                  {Array.from({ length: itemData['rating'] }).map(
-                    (_, index) => (
-                      <FaStar className="star" key={'star' + index} />
-                    )
-                  )}
-                  {itemData['rating'] - Math.floor(itemData['rating']) ? (
+                  {Array.from({ length: itemData.rating }).map((_, index) => (
+                    <FaStar className="star" key={'star' + index} />
+                  ))}
+                  {itemData.rating - Math.floor(itemData.rating) ? (
                     <FaStarHalf className="star" />
                   ) : (
                     <></>
                   )}
-                  <p className="rating-number">{itemData['rating']}</p>
+                  <p className="rating-number">{itemData.rating}</p>
                 </div>
               </div>
 
-              <p className="product-description">{itemData['description']}</p>
+              <p className="product-description">{itemData.description}</p>
               <p> 5-10 days shipping</p>
 
               <button

@@ -26,7 +26,7 @@ export const Fav = () => {
   const removeFav = (id: string) => {
     PrivateAxiosInstance.delete(`/api/fav/delete/${id}/`)
       .then((res) => {
-        if (res.status === 204) alert('Fav product!');
+        if (res.status === 204) alert('Removed from Favorites!');
         else alert('Failed to remove product');
         getFavorite();
       })

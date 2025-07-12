@@ -12,7 +12,6 @@ const ShopPage = () => {
       .then((res) => res.data)
       .then((data) => {
         setProductItem(data);
-        console.log(data);
       })
       .catch((err) => alert(err));
   };
@@ -36,8 +35,8 @@ const ShopPage = () => {
             />
           </div>
           <div className="product-grid">
-            {productItem.map((item) => (
-              <ProductCard product={item} />
+            {productItem.map((item, index) => (
+              <ProductCard product={item} key={index} />
             ))}
           </div>
         </div>

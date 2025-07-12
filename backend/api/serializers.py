@@ -29,8 +29,9 @@ class UserCartSerializer(serializers.ModelSerializer):
 
 class UserFavSerializer(serializers.ModelSerializer):
     product = ProductSerializer(read_only=True)
+    product_id = serializers.PrimaryKeyRelatedField(queryset = Product.objects.all(), write_only = True, source = "product")
 
     class Meta:
         model = Fav
-        fields = ["product", "id"]
+        fields = ["product", "id", "product_id"]
         extra_kwargs = {'user': {"read_only" : True}}

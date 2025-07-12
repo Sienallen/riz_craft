@@ -27,9 +27,15 @@ export interface Product {
   rating: number;
   description: string;
   path: string;
+  id: string;
 }
 
 export interface favContext {
   fav: Product[];
   setFav: Dispatch<React.SetStateAction<Product[]>>;
+}
+
+export interface Fav {
+  product: Product;
+  id: string;
 }
