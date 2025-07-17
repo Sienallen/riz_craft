@@ -1,6 +1,7 @@
 from django.contrib import admin
-from .models import Product, Fav
+from .models import Product, Fav, Cart
 
 # Register your models here.
 admin.site.register(Product)
 admin.site.register(Fav)
+admin.site.register(Cart)
