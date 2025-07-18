@@ -1,11 +1,12 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import './Product.css';
 import { FaStar, FaStarHalf } from 'react-icons/fa6';
 import { useNavigate, useParams } from 'react-router';
 import { CartContext } from '../Context';
-import { Fav, Product } from '../Interface';
+import { Cart, Fav, Product } from '../Interface';
 import isAuthenticated from '../Accounts/isAuthenticated';
 import { PrivateAxiosInstance, PublicAxiosInstance } from '../../api';
+import { productsList } from './ProductLists';
 
 const ProductPage = () => {
   const params = useParams();
@@ -14,6 +15,7 @@ const ProductPage = () => {
   const [favItem, setFavItem] = useState<Fav | undefined>();
   const [itemData, setItemData] = useState<Product>();
   const [isAuth, setIsAuth] = useState<boolean | null>(null);
+  const [userCart, setUserCart] = useState<Cart[]>();
 
   //Fetches for the list of products and gets the data that matches the path of the page.
   const getProduct = () => {
@@ -21,6 +23,15 @@ const ProductPage = () => {
       .then((res) => res.data)
       .then((data) => {
         setItemData(data.find((item: Product) => item.path === path));
+      })
+      .catch((err) => alert(err));
+  };
+
+  const getUserCart = () => {
+    PrivateAxiosInstance.get('api/cart/')
+      .then((res) => res.data)
+      .then((data) => {
+        setUserCart(data.find((item: Cart) => item.product.path === path));
       })
       .catch((err) => alert(err));
   };
@@ -41,6 +52,7 @@ const ProductPage = () => {
       setIsAuth(result);
       if (result) {
         checkFav();
+        getUserCart();
       }
     };
     checkAuth();
@@ -48,7 +60,7 @@ const ProductPage = () => {
 
   const cartContext = useContext(CartContext);
 
-  const addToCart = (newPath: string, newAmount: number = 1) => {
+  /* const addToCart = (newPath: string, newAmount: number = 1) => {
     if (cartContext !== undefined && cartContext.setCart !== undefined) {
       if (cartContext.cart !== undefined) {
         const updatedCart = [...cartContext.cart];
@@ -67,6 +79,27 @@ const ProductPage = () => {
         cartContext.setCart(updatedCart);
       }
     }
+  }; */
+
+  const addToCart = (itemData: Product) => {
+    console.log(userCart);
+    if (userCart) {
+      console.log('update cart data');
+      console.log(userCart);
+    } else {
+      console.log('add to cart');
+      PrivateAxiosInstance.post(`/api/cart/`, {
+        product_id: itemData.id,
+        quantity: 1,
+      })
+        .then((res) => {
+          if (res.status == 201) {
+            alert('Added to cart!');
+          } else alert('Failed to add to cart');
+        })
+        .catch((error) => alert(error));
+    }
+    getUserCart();
   };
 
   // ***** New function to transition project to backend ******
@@ -94,8 +127,6 @@ const ProductPage = () => {
 
   // ***** EOF function to transition project to backend ******
   if (itemData !== undefined) {
-    const path: string = itemData.path;
-
     return (
       <>
         <div>
@@ -148,7 +179,7 @@ const ProductPage = () => {
 
               <button
                 className="gold-button product-button"
-                onClick={() => addToCart(path)}
+                onClick={() => addToCart(itemData)}
               >
                 Add to cart
               </button>

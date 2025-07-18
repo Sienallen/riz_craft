@@ -1,23 +1,25 @@
+import { PrivateAxiosInstance } from '../../../api';
 import { useCartContext } from '../../Context';
-import { cartList } from '../../Interface';
+import { Cart, Product } from '../../Interface';
 import './CartCart.css';
 
-interface props {
-  item: cartList;
+interface prop {
+  product: Product;
+  quantity: number;
+  id: string;
 }
 
-const CartCard = ({ item }: props) => {
-  const cartContext = useCartContext();
-
+const CartCard = ({ product, quantity, id }: prop) => {
   const addQty = () => {
-    const updatedCart = [...cartContext.cart];
+    /*  const updatedCart = [...cartContext.cart];
     const index = updatedCart.map((item) => item.path).indexOf(item.path);
     updatedCart[index].number++;
-    cartContext.setCart(updatedCart);
+    cartContext.setCart(updatedCart); */
+    console.log('add quantity');
   };
 
   const minusQty = () => {
-    const updatedCart = [...cartContext.cart];
+    /* const updatedCart = [...cartContext.cart];
     const index = updatedCart.map((item) => item.path).indexOf(item.path);
     if (updatedCart[index].number !== 1) {
       updatedCart[index].number--;
@@ -25,14 +27,19 @@ const CartCard = ({ item }: props) => {
     } else {
       updatedCart.splice(index, 1);
       cartContext.setCart(updatedCart);
-    }
+    } */
+
+    console.log('minus quantity');
   };
 
   const removeItem = () => {
-    const updatedCart = [...cartContext.cart];
+    /* const updatedCart = [...cartContext.cart];
     const index = updatedCart.map((item) => item.path).indexOf(item.path);
     updatedCart.splice(index, 1);
-    cartContext.setCart(updatedCart);
+    cartContext.setCart(updatedCart); */
+    PrivateAxiosInstance;
+
+    console.log('remove item');
   };
 
   return (
@@ -40,7 +47,7 @@ const CartCard = ({ item }: props) => {
       <div id="cart-card">
         <section id="cart-head">
           <img
-            src={item.img}
+            src={product.img}
             alt="item image"
             height="80"
             width="80"
@@ -48,8 +55,8 @@ const CartCard = ({ item }: props) => {
           />
 
           <section id="cartCard-title">
-            <h3>{item.name}</h3>
-            <p>{item.description}</p>
+            <h3>{product.name}</h3>
+            <p>{product.description}</p>
 
             <p className="gold-button" id="remove-button" onClick={removeItem}>
               Remove
@@ -59,15 +66,15 @@ const CartCard = ({ item }: props) => {
 
         <section id="cart-numbers">
           <section id="cart-price">
-            <p>{'$' + item.price}</p>
+            <p>{'$' + product.price}</p>
           </section>
           <section id="cart-qty">
             <p onClick={minusQty}>-</p>
-            <p>{item.amount}</p>
+            <p>{quantity}</p>
             <p onClick={addQty}>+</p>
           </section>
           <section id="cart-item-total">
-            <p>{'$' + item.price * item.amount}</p>
+            <p>{'$' + product.price * quantity}</p>
           </section>
         </section>
       </div>

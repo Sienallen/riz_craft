@@ -14,7 +14,7 @@ export const FavCard = ({ item, onRemove, addToCart, itemID }: props) => {
   return (
     <>
       <div id="fav-card">
-        <img src={item.img} alt={item.name} className="cart-img" />
+        <img src={item.img} alt={item.name} className="fav-img" />
 
         <div id="fav-info">
           <div>

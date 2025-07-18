@@ -1,8 +1,9 @@
 import { Dispatch } from 'react';
 
 export interface Cart {
-  number: number;
-  path: string;
+  product: Product;
+  quantity: number;
+  id: string;
 }
 
 export interface cartContext {
@@ -28,11 +29,6 @@ export interface Product {
   description: string;
   path: string;
   id: string;
-}
-
-export interface favContext {
-  fav: Product[];
-  setFav: Dispatch<React.SetStateAction<Product[]>>;
 }
 
 export interface Fav {

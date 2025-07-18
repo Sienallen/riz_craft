@@ -1,7 +1,12 @@
-#fav-title{
-    width: 80%;
-    margin: auto;
-    color: #ff5fa2;
-    border-bottom: #fcc89b solid thin;
-    padding: 1rem;
+#fav-title {
+  width: 80%;
+  margin: auto;
+  color: #ff5fa2;
+  border-bottom: #fcc89b solid thin;
+  padding: 1rem;
+}
+
+.fav-img {
+  height: auto;
+  width: 5rem;
 }

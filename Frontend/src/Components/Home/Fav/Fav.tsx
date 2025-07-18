@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useFavContext } from '../../Context';
 import './Fav.css';
 import { FavCard } from './FavCard';
 import { PrivateAxiosInstance } from '../../../api';

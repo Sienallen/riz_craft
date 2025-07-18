@@ -1,12 +1,24 @@
 import { useCartContext } from '../../Context';
-import CartCard from './CartCard';
 import './Cart.css';
-import { productsList } from '../../Products/ProductLists';
+import UserCart from './UserCart';
+import isAuthenticated from '../../Accounts/isAuthenticated';
+import { useEffect, useState } from 'react';
+import LocalCart from './LocalCart';
 
 const Cart = () => {
   const cartContext = useCartContext();
 
-  const displayCart = () => {
+  const [isAuth, setIsAuth] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      const result = await isAuthenticated();
+      setIsAuth(result);
+    };
+    checkAuth();
+  }, []);
+
+  /* const displayCart = () => {
     if (cartContext.cart.length !== 0) {
       const cartList = cartContext.cart.map((cart) => ({
         ...productsList[
@@ -63,13 +75,9 @@ const Cart = () => {
         </>
       );
     }
-  };
+  }; */
 
-  return (
-    <>
-      <div>{displayCart()}</div>
-    </>
-  );
+  return isAuth ? <UserCart /> : <LocalCart />;
 };
 
 export default Cart;
