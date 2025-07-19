@@ -51,7 +51,7 @@ const ProductPage = () => {
     if (favItem) {
       await PrivateAxiosInstance.delete(`/api/fav/delete/${favItem.id}/`)
         .then((res) => {
-          if (res.status === 204) {
+          if (res.status === 201) {
             alert('Removed from favorite!');
           } else alert('Failed to remove product');
         })

@@ -77,3 +77,4 @@ class UserFavDelete(generics.DestroyAPIView):
     def get_queryset(self):
         user = self.request.user
         return Fav.objects.filter(user=user)
+

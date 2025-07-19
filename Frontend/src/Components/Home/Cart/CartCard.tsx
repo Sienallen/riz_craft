@@ -1,6 +1,6 @@
 import { Product } from '../../Interface';
 import './CartCart.css';
-import { deleteCart } from './CartFunctions';
+import { deleteCart, UpdateCart } from './CartFunctions';
 
 interface prop {
   product: Product;
@@ -10,28 +10,6 @@ interface prop {
 }
 
 const CartCard = ({ product, quantity, getCart }: prop) => {
-  const addQty = () => {
-    /*  const updatedCart = [...cartContext.cart];
-    const index = updatedCart.map((item) => item.path).indexOf(item.path);
-    updatedCart[index].number++;
-    cartContext.setCart(updatedCart); */
-    console.log('add quantity');
-  };
-
-  const minusQty = () => {
-    /* const updatedCart = [...cartContext.cart];
-    const index = updatedCart.map((item) => item.path).indexOf(item.path);
-    if (updatedCart[index].number !== 1) {
-      updatedCart[index].number--;
-      cartContext.setCart(updatedCart);
-    } else {
-      updatedCart.splice(index, 1);
-      cartContext.setCart(updatedCart);
-    } */
-
-    console.log('minus quantity');
-  };
-
   return (
     <>
       <div id="cart-card">
@@ -65,9 +43,9 @@ const CartCard = ({ product, quantity, getCart }: prop) => {
             <p>{'$' + product.price}</p>
           </section>
           <section id="cart-qty">
-            <p onClick={minusQty}>-</p>
+            <p onClick={() => UpdateCart(product, -1, getCart)}>-</p>
             <p>{quantity}</p>
-            <p onClick={addQty}>+</p>
+            <p onClick={() => UpdateCart(product, 1, getCart)}>+</p>
           </section>
           <section id="cart-item-total">
             <p>{'$' + product.price * quantity}</p>

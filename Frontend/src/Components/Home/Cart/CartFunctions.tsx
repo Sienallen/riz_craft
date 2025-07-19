@@ -2,10 +2,14 @@ import { PrivateAxiosInstance } from '../../../api';
 import { Cart, Product } from '../../Interface';
 
 //Used my Favcard and cart card to update the cart.
-export const UpdateCart = async (itemData: Product, quantity: number = 1) => {
-  let item = null;
+export const UpdateCart = async (
+  itemData: Product,
+  quantity: number = 1,
+  getCart: () => void = () => {}
+) => {
+  let item: Cart | null = null;
   try {
-    const response = await PrivateAxiosInstance.get('api/cart/');
+    const response = await PrivateAxiosInstance.get('/api/cart/');
     const cartItems = response.data;
 
     // Save filtered item to your `let` variable
@@ -16,8 +20,19 @@ export const UpdateCart = async (itemData: Product, quantity: number = 1) => {
     console.error('Error fetching cart:', error);
   }
 
+  console.log(`item quatity ${item?.quantity}  and quatity ${quantity}`);
+
   //updates item to cart if item is already in cart
-  if (item) {
+  if (item && item?.quantity + quantity === 0) {
+    deleteCart(itemData, getCart);
+  } else if (item) {
+    await PrivateAxiosInstance.patch(`/api/cart/update/${item.id}/`, {
+      quantity: item.quantity + quantity,
+    }).then((res) => {
+      if (res.status === 200) {
+        alert('Updated cart!');
+      } else alert('Failed to update cart');
+    });
     console.log('update cart data');
   }
   //adds item to cart if item is not in cart
@@ -28,12 +43,14 @@ export const UpdateCart = async (itemData: Product, quantity: number = 1) => {
       quantity: 1,
     })
       .then((res) => {
-        if (res.status == 201) {
+        if (res.status === 201) {
           alert('Added to cart!');
         } else alert('Failed to add to cart');
       })
       .catch((error) => alert(error));
   }
+
+  await getCart();
 };
 
 export const deleteCart = async (itemData: Product, getCart: () => void) => {
