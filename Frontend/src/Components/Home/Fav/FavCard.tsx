@@ -6,7 +6,7 @@ import { FaStar, FaStarHalf } from 'react-icons/fa6';
 interface props {
   item: Product;
   onRemove: (id: string) => void;
-  addToCart: () => void;
+  addToCart: (itemData: Product) => void;
   itemID: string;
 }
 
@@ -37,7 +37,7 @@ export const FavCard = ({ item, onRemove, addToCart, itemID }: props) => {
           </div>
 
           <div id="fav-edits">
-            <button className="gold-button" onClick={() => addToCart()}>
+            <button className="gold-button" onClick={() => addToCart(item)}>
               Add to cart
             </button>
 

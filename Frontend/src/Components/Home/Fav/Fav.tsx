@@ -3,6 +3,7 @@ import './Fav.css';
 import { FavCard } from './FavCard';
 import { PrivateAxiosInstance } from '../../../api';
 import { Product } from '../../Interface';
+import { UpdateCart } from '../Cart/CartFunctions';
 
 interface Fav {
   product: Product;
@@ -32,10 +33,6 @@ export const Fav = () => {
       .catch((error) => alert(error));
   };
 
-  const addToCart = () => {
-    console.log('add to cart function');
-  };
-
   useEffect(() => {
     getFavorite();
   }, []);
@@ -48,7 +45,7 @@ export const Fav = () => {
           <FavCard
             item={item.product}
             onRemove={removeFav}
-            addToCart={addToCart}
+            addToCart={UpdateCart}
             itemID={item.id}
             key={item.id}
           />

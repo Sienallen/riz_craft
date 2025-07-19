@@ -49,6 +49,7 @@ const UserCart = () => {
               quantity={item.quantity}
               id={item.id}
               key={item.id}
+              getCart={getUserCart}
             />
           ))}
 

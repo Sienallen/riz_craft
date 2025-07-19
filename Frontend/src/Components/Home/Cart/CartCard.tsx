@@ -1,15 +1,15 @@
-import { PrivateAxiosInstance } from '../../../api';
-import { useCartContext } from '../../Context';
-import { Cart, Product } from '../../Interface';
+import { Product } from '../../Interface';
 import './CartCart.css';
+import { deleteCart } from './CartFunctions';
 
 interface prop {
   product: Product;
   quantity: number;
   id: string;
+  getCart: () => void;
 }
 
-const CartCard = ({ product, quantity, id }: prop) => {
+const CartCard = ({ product, quantity, getCart }: prop) => {
   const addQty = () => {
     /*  const updatedCart = [...cartContext.cart];
     const index = updatedCart.map((item) => item.path).indexOf(item.path);
@@ -32,16 +32,6 @@ const CartCard = ({ product, quantity, id }: prop) => {
     console.log('minus quantity');
   };
 
-  const removeItem = () => {
-    /* const updatedCart = [...cartContext.cart];
-    const index = updatedCart.map((item) => item.path).indexOf(item.path);
-    updatedCart.splice(index, 1);
-    cartContext.setCart(updatedCart); */
-    PrivateAxiosInstance;
-
-    console.log('remove item');
-  };
-
   return (
     <>
       <div id="cart-card">
@@ -58,7 +48,13 @@ const CartCard = ({ product, quantity, id }: prop) => {
             <h3>{product.name}</h3>
             <p>{product.description}</p>
 
-            <p className="gold-button" id="remove-button" onClick={removeItem}>
+            <p
+              className="gold-button"
+              id="remove-button"
+              onClick={() => {
+                deleteCart(product, getCart);
+              }}
+            >
               Remove
             </p>
           </section>
