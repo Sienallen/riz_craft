@@ -1,6 +1,6 @@
 import { Product } from '../../Interface';
 import './CartCart.css';
-import { deleteCart, UpdateCart } from './CartFunctions';
+import { deleteCart, UpdateUserCart } from './CartFunctions';
 
 interface prop {
   product: Product;
@@ -43,9 +43,9 @@ const CartCard = ({ product, quantity, getCart }: prop) => {
             <p>{'$' + product.price}</p>
           </section>
           <section id="cart-qty">
-            <p onClick={() => UpdateCart(product, -1, getCart)}>-</p>
+            <p onClick={() => UpdateUserCart(product, -1, getCart)}>-</p>
             <p>{quantity}</p>
-            <p onClick={() => UpdateCart(product, 1, getCart)}>+</p>
+            <p onClick={() => UpdateUserCart(product, 1, getCart)}>+</p>
           </section>
           <section id="cart-item-total">
             <p>{'$' + product.price * quantity}</p>

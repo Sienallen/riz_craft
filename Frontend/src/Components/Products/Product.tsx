@@ -5,7 +5,7 @@ import { useNavigate, useParams } from 'react-router';
 import { Fav, Product } from '../Interface';
 import isAuthenticated from '../Accounts/isAuthenticated';
 import { PrivateAxiosInstance, PublicAxiosInstance } from '../../api';
-import { UpdateCart } from '../Home/Cart/CartFunctions';
+import { UpdateUserCart, UpdateLocalCart } from '../Home/Cart/CartFunctions';
 
 const ProductPage = () => {
   const params = useParams();
@@ -51,7 +51,7 @@ const ProductPage = () => {
     if (favItem) {
       await PrivateAxiosInstance.delete(`/api/fav/delete/${favItem.id}/`)
         .then((res) => {
-          if (res.status === 201) {
+          if (res.status === 204) {
             alert('Removed from favorite!');
           } else alert('Failed to remove product');
         })
@@ -123,7 +123,13 @@ const ProductPage = () => {
 
               <button
                 className="gold-button product-button"
-                onClick={() => UpdateCart(itemData)}
+                onClick={() => {
+                  if (isAuth) {
+                    UpdateUserCart(itemData);
+                  } else {
+                    UpdateLocalCart(itemData);
+                  }
+                }}
               >
                 Add to cart
               </button>

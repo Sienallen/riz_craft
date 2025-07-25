@@ -1,7 +1,6 @@
 import './FavCard.css';
 import { Product } from '../../Interface';
 import { FaStar, FaStarHalf } from 'react-icons/fa6';
-//import { useCartContext, useFavContext } from '../../Context';
 
 interface props {
   item: Product;

@@ -2,7 +2,20 @@ import { PrivateAxiosInstance } from '../../../api';
 import { Cart, Product } from '../../Interface';
 
 //Used my Favcard and cart card to update the cart.
-export const UpdateCart = async (
+
+export const UpdateLocalCart = (itemData: Product, quantity: number = 1) => {
+  let localCart: Cart | null;
+
+  const jsonCart = localStorage.getItem('localCart');
+  if (jsonCart === null) {
+    let item: Cart[] = [{ product: itemData, quantity: 1, id: '1' }];
+    localStorage.setItem('localCart', JSON.stringify(item));
+  } else {
+    localCart = JSON.parse(jsonCart);
+  }
+};
+
+export const UpdateUserCart = async (
   itemData: Product,
   quantity: number = 1,
   getCart: () => void = () => {}
@@ -19,8 +32,6 @@ export const UpdateCart = async (
   } catch (error) {
     console.error('Error fetching cart:', error);
   }
-
-  console.log(`item quatity ${item?.quantity}  and quatity ${quantity}`);
 
   //updates item to cart if item is already in cart
   if (item && item?.quantity + quantity === 0) {

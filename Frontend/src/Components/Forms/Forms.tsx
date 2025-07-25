@@ -26,6 +26,7 @@ const Forms = ({ route, method }: props) => {
         password,
       });
       if (method === 'login') {
+        localStorage.clear();
         localStorage.setItem(ACCESS_TOKEN, res.data.access);
         localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
         navigate('/');

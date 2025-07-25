@@ -3,7 +3,7 @@ import './Fav.css';
 import { FavCard } from './FavCard';
 import { PrivateAxiosInstance } from '../../../api';
 import { Product } from '../../Interface';
-import { UpdateCart } from '../Cart/CartFunctions';
+import { UpdateUserCart } from '../Cart/CartFunctions';
 
 interface Fav {
   product: Product;
@@ -45,7 +45,7 @@ export const Fav = () => {
           <FavCard
             item={item.product}
             onRemove={removeFav}
-            addToCart={UpdateCart}
+            addToCart={UpdateUserCart}
             itemID={item.id}
             key={item.id}
           />
