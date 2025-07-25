@@ -16,10 +16,7 @@ const ProductCard = ({ product }: prop) => {
   return (
     <>
       <div className="product-card">
-        <img
-          src={import.meta.env.VITE_API_URL + product.img}
-          alt={product.name}
-        />
+        <img src={product.img} alt={product.name} />
         <div className="product-cardBody">
           <h4>{product.name}</h4>
           <div className="product-cardDescript">

@@ -3,6 +3,7 @@ import './Cart.css';
 import { Cart } from '../../Interface';
 import { useEffect, useState } from 'react';
 import { PrivateAxiosInstance } from '../../../api';
+import { UpdateUserCart } from './CartFunctions';
 
 const UserCart = () => {
   const [userCartItem, setUserCartItem] = useState<Cart[]>([]);
@@ -50,6 +51,7 @@ const UserCart = () => {
               id={item.id}
               key={item.id}
               getCart={getUserCart}
+              UpdateCart={UpdateUserCart}
             />
           ))}
 

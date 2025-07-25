@@ -1,20 +1,44 @@
 import { PrivateAxiosInstance } from '../../../api';
 import { Cart, Product } from '../../Interface';
 
-//Used my Favcard and cart card to update the cart.
-
-export const UpdateLocalCart = (itemData: Product, quantity: number = 1) => {
-  let localCart: Cart | null;
+//updates the local storage when the user is not logged in
+export const UpdateLocalCart = (
+  itemData: Product,
+  quantity: number = 1,
+  getCart: () => void = () => {}
+) => {
+  let localCart: Cart[] = [];
 
   const jsonCart = localStorage.getItem('localCart');
-  if (jsonCart === null) {
-    let item: Cart[] = [{ product: itemData, quantity: 1, id: '1' }];
-    localStorage.setItem('localCart', JSON.stringify(item));
-  } else {
+  if (jsonCart !== null) {
     localCart = JSON.parse(jsonCart);
   }
+
+  const itemIndex = localCart.findIndex(
+    (item) => item.product.path === itemData.path
+  );
+
+  //if item quantity is at 1 and user wants to decrease it remove it.
+  if (itemIndex !== -1 && localCart[itemIndex].quantity + quantity === 0) {
+    localCart.splice(itemIndex, 1);
+  }
+  //item quantity incrases or decrases by 1
+  else if (itemIndex !== -1) {
+    console.log('increasing or decreasing item');
+    localCart[itemIndex].quantity += quantity;
+  }
+  //when item is not in cart, add the item to the localCart
+  else {
+    console.log('json cart is null ');
+    localCart.push({ product: itemData, quantity: 1, id: '1' });
+  }
+
+  //set the key 'localCart' have value of localCart (array of Products)
+  localStorage.setItem('localCart', JSON.stringify(localCart));
+  getCart();
 };
 
+//updates the cart that connects with the user if the user is logged in
 export const UpdateUserCart = async (
   itemData: Product,
   quantity: number = 1,
@@ -36,7 +60,9 @@ export const UpdateUserCart = async (
   //updates item to cart if item is already in cart
   if (item && item?.quantity + quantity === 0) {
     deleteCart(itemData, getCart);
-  } else if (item) {
+  }
+  //increase or decrease the item by 1 or -1
+  else if (item) {
     await PrivateAxiosInstance.patch(`/api/cart/update/${item.id}/`, {
       quantity: item.quantity + quantity,
     }).then((res) => {
@@ -46,6 +72,7 @@ export const UpdateUserCart = async (
     });
     console.log('update cart data');
   }
+
   //adds item to cart if item is not in cart
   else {
     console.log('add to cart');

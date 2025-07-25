@@ -1,20 +1,25 @@
 import { useEffect, useState } from 'react';
 import { Cart } from '../../Interface';
 import CartCard from './CartCard';
+import { UpdateLocalCart } from './CartFunctions';
 
 const LocalCart = () => {
-  const [localCartItem, setLocalCartItem] = useState<Cart[]>([]);
+  const [localCart, setLocalCart] = useState<Cart[]>([]);
 
-  useEffect(() => {
+  const getCart = () => {
     const jsonCart = localStorage.getItem('localCart');
     if (jsonCart !== null) {
       //put this in a use effect to prevent a lot of rerendersç
-      setLocalCartItem(JSON.parse(jsonCart));
+      setLocalCart(JSON.parse(jsonCart));
     }
+  };
+
+  useEffect(() => {
+    getCart();
   }, []);
 
   // If the jsonCart is null meaning nothing in localstorage, it will display empty shopping cart
-  if (localCartItem.length === 0) {
+  if (localCart.length === 0) {
     return (
       <>
         <h1 id="cart-title"> Local Shopping Cart</h1>
@@ -25,7 +30,7 @@ const LocalCart = () => {
 
   //if the storedCartItem is not undefined it will display the cart
   else {
-    const subtotal = localCartItem
+    const subtotal = localCart
       .map((item) => item.quantity * item.product.price)
       .reduce((sum, price) => sum + price);
 
@@ -40,13 +45,14 @@ const LocalCart = () => {
             <p>Total</p>
           </div>
 
-          {localCartItem.map((item) => (
+          {localCart.map((item) => (
             <CartCard
               product={item.product}
               quantity={item.quantity}
               id={item.id}
               key={item.id}
-              getCart={() => {}}
+              UpdateCart={UpdateLocalCart}
+              getCart={getCart}
             />
           ))}
 

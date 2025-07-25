@@ -1,4 +1,4 @@
-import { Product } from '../../Interface';
+import { Cart, Product } from '../../Interface';
 import './CartCart.css';
 import { deleteCart, UpdateUserCart } from './CartFunctions';
 
@@ -7,9 +7,10 @@ interface prop {
   quantity: number;
   id: string;
   getCart: () => void;
+  UpdateCart: (product: Product, quantity: number, getCart: () => void) => void;
 }
 
-const CartCard = ({ product, quantity, getCart }: prop) => {
+const CartCard = ({ product, quantity, getCart, UpdateCart }: prop) => {
   return (
     <>
       <div id="cart-card">
@@ -43,9 +44,9 @@ const CartCard = ({ product, quantity, getCart }: prop) => {
             <p>{'$' + product.price}</p>
           </section>
           <section id="cart-qty">
-            <p onClick={() => UpdateUserCart(product, -1, getCart)}>-</p>
+            <p onClick={() => UpdateCart(product, -1, getCart)}>-</p>
             <p>{quantity}</p>
-            <p onClick={() => UpdateUserCart(product, 1, getCart)}>+</p>
+            <p onClick={() => UpdateCart(product, 1, getCart)}>+</p>
           </section>
           <section id="cart-item-total">
             <p>{'$' + product.price * quantity}</p>

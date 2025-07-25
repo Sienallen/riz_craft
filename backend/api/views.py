@@ -23,7 +23,7 @@ class ProductListView(generics.ListCreateAPIView):
 
     def list(self, request):
         queryset = self.get_queryset()
-        serializer = ProductSerializer(queryset, many=True)
+        serializer = ProductSerializer(queryset, many=True, context={'request': request})
         return Response(serializer.data)
 
 class UserCartCreate(generics.ListCreateAPIView):

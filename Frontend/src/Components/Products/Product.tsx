@@ -78,11 +78,7 @@ const ProductPage = () => {
         </div>
 
         <div className="aboutItem">
-          <img
-            src={import.meta.env.VITE_API_URL + itemData.img}
-            alt={itemData.name}
-            className="productImg"
-          />
+          <img src={itemData.img} alt={itemData.name} className="productImg" />
           <section className="productData">
             <div className="product-header">
               <h2 className="product-title">{itemData.name}</h2>
