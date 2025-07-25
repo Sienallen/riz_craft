@@ -59,7 +59,7 @@ const LocalCart = () => {
           <ul id="cart-totals">
             <li>
               <p>Subtotal:</p>
-              <p>${subtotal}</p>
+              <p>${subtotal.toFixed(2)}</p>
             </li>
             <li>
               <p>Sales Tax:</p>

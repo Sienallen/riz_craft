@@ -49,7 +49,7 @@ const CartCard = ({ product, quantity, getCart, UpdateCart }: prop) => {
             <p onClick={() => UpdateCart(product, 1, getCart)}>+</p>
           </section>
           <section id="cart-item-total">
-            <p>{'$' + product.price * quantity}</p>
+            <p>{'$' + (product.price * quantity).toFixed(2)}</p>
           </section>
         </section>
       </div>
