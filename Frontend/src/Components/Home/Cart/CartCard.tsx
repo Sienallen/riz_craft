@@ -1,6 +1,6 @@
-import { Cart, Product } from '../../Interface';
+import { Product } from '../../Interface';
 import './CartCart.css';
-import { deleteCart, UpdateUserCart } from './CartFunctions';
+import { deleteCart } from './CartFunctions';
 
 interface prop {
   product: Product;
