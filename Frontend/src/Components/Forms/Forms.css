@@ -1,0 +1,40 @@
+.forms-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+  margin: auto;
+  margin-top: 3rem;
+  row-gap: 2rem;
+  border: 1px #ff5fa2 solid;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  box-shadow: 0 4px 15px 0 rgba(199, 163, 178, 0.5);
+  background-color: #fff2f5;
+}
+
+#form-title {
+  color: black;
+}
+
+.form-input {
+  border: solid 1px #ff5fa2;
+  border-radius: 0.5rem;
+  width: 50%;
+  height: 2rem;
+  padding-left: 1rem;
+}
+
+#have-account {
+  margin-top: -2rem;
+  display: flex;
+  column-gap: 0.5rem;
+  color: black;
+}
+
+.form-submit {
+  padding: 0.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}

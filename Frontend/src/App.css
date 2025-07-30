@@ -1,12 +1,18 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Concert One", sans-serif;
+  font-family: 'Concert One', sans-serif;
   font-style: normal;
 }
 
 body {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  margin-top: auto;
 }
 
 .gold-button {

@@ -2,26 +2,21 @@ import './App.css';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import { Outlet } from 'react-router';
-import { useState } from 'react';
-import { Cart } from './Components/Interface';
-import { CartContext } from './Components/Context';
-/* import plaidBag from './assets/Red Bag.jpg'; */
 
 function App() {
-  const [cart, setCart] = useState<Cart[]>([
-    /* {
-    number: 2,
-    path: 'floweredBag',
-  } */
-  ]);
-
   return (
     <>
-      <Header />
-      <CartContext.Provider value={{ cart, setCart }}>
-        <Outlet />
-      </CartContext.Provider>
-      <Footer />
+      <body>
+        <header>
+          <Header />
+        </header>
+        <main>
+          <Outlet />
+        </main>
+        <footer>
+          <Footer />
+        </footer>
+      </body>
     </>
   );
 }

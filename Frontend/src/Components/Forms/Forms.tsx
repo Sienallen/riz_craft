@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router';
 import { PrivateAxiosInstance } from '../../api';
 import { ACCESS_TOKEN, REFRESH_TOKEN } from '../../constants';
 import LoadingIndicator from './LoadingIndicator';
+import './Forms.css';
+import { Link } from 'react-router-dom';
 
 interface props {
   route: string;
@@ -43,7 +45,7 @@ const Forms = ({ route, method }: props) => {
   return (
     <>
       <form className="forms-container" onSubmit={handleSubmit}>
-        <h1>{title}</h1>
+        <h1 id="form-title">{title}</h1>
         <input
           className="form-input"
           type="text"
@@ -58,9 +60,24 @@ const Forms = ({ route, method }: props) => {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
         />
+        {method === 'login' ? (
+          <div id="have-account">
+            <p>Don't Have an account? </p>
+            <Link className="form-type" to="/register">
+              Register
+            </Link>
+          </div>
+        ) : (
+          <div id="have-account">
+            <p>Have an account? </p>
+            <Link className="form-type" to="/login">
+              Sign In
+            </Link>
+          </div>
+        )}
 
         {loading && <LoadingIndicator />}
-        <button type="submit" className="form-submit">
+        <button type="submit" className="form-submit gold-button">
           {title}
         </button>
       </form>
