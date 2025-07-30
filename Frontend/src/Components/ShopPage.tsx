@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react';
 import './ShopPage.css';
 import ProductCard from './Products/ProductCard';
 import { PublicAxiosInstance } from '../api';
+import { Product } from './Interface';
 
 const ShopPage = () => {
   const [q, setQ] = useState('');
-  const [productItem, setProductItem] = useState([]);
+  const [productItem, setProductItem] = useState<Product[]>([]);
 
   const getProduct = () => {
     PublicAxiosInstance.get('/api/products/')
@@ -15,6 +16,13 @@ const ShopPage = () => {
       })
       .catch((err) => alert(err));
   };
+
+  const filterProducts = productItem.filter((item) => {
+    const qLength = q.length;
+    if (item.name.slice(0, qLength).toLowerCase().includes(q.toLowerCase())) {
+      return item;
+    }
+  });
 
   useEffect(() => {
     getProduct();
@@ -35,7 +43,7 @@ const ShopPage = () => {
             />
           </div>
           <div className="product-grid">
-            {productItem.map((item, index) => (
+            {filterProducts.map((item, index) => (
               <ProductCard product={item} key={index} />
             ))}
           </div>
