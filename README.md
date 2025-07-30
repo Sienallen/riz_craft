@@ -1,6 +1,6 @@
-#RizCraft
+# RizCraft
 
-##Description
+## Description
 RizCraft is an e-commerce website designed to display and sell handcrafted items.
 This project was built as a way to deepen my understanding of React and Django.
 
@@ -12,7 +12,7 @@ This project was built as a way to deepen my understanding of React and Django.
 - Full-stack project structure and deployment
 
 
-##Live Application Url
+## Live Application Url
 
 https://rizcraft.netlify.app/
 
