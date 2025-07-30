@@ -17,6 +17,7 @@ const ShopPage = () => {
       .catch((err) => alert(err));
   };
 
+  //takes the search input and filters product
   const filterProducts = productItem.filter((item) => {
     const qLength = q.length;
     if (item.name.slice(0, qLength).toLowerCase().includes(q.toLowerCase())) {
