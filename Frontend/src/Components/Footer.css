@@ -6,8 +6,10 @@
   justify-content: space-evenly;
   padding-top: 1.5rem;
   padding-bottom: 2rem;
-  /* position: absolute;
-  bottom: 0; */
+}
+
+.site-title {
+  text-decoration: underline;
 }
 
 footer ul li {
@@ -25,7 +27,7 @@ footer ul li p {
 }
 
 @media all and (max-width: 600px) {
-  footer {
+  .footer-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -42,6 +44,7 @@ footer ul li p {
   }
 
   .site-title {
+    text-decoration: none;
     display: flex;
     flex-direction: row;
     column-gap: 0.3rem;
@@ -70,17 +73,6 @@ footer ul li p {
     padding: 0.3rem;
   }
 
-  /*  #site-links {
-    display: none;
-  }
-
-  #contact-info {
-    display: none;
-  }
-
-  #social-links {
-    display: none;
-  } */
   .dropdown-collapse {
     display: flex;
     flex-direction: column;

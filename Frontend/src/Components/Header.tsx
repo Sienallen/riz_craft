@@ -31,7 +31,9 @@ const Header = () => {
             <IoClose id="close" />
           </label>
 
-          <h3>Riz's Crafts</h3>
+          <Link to="/" id="header-title">
+            Riz's Crafts
+          </Link>
           <ul>
             <li>
               <NavLink to="/" preventScrollReset={true}>
