@@ -4,8 +4,7 @@
   font-family: 'Concert One', sans-serif;
   font-style: normal;
 }
-
-body {
+.body-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;

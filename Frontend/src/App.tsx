@@ -5,19 +5,17 @@ import { Outlet } from 'react-router';
 
 function App() {
   return (
-    <>
-      <body>
-        <header>
-          <Header />
-        </header>
-        <main>
-          <Outlet />
-        </main>
-        <footer>
-          <Footer />
-        </footer>
-      </body>
-    </>
+    <div className="body-container">
+      <header>
+        <Header />
+      </header>
+      <main>
+        <Outlet />
+      </main>
+      <footer>
+        <Footer />
+      </footer>
+    </div>
   );
 }
 
