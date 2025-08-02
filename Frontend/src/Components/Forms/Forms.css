@@ -4,6 +4,7 @@
   align-items: center;
   flex-direction: column;
   width: 50%;
+  height: 40vh;
   margin: auto;
   margin-top: 3rem;
   row-gap: 2rem;
@@ -38,4 +39,10 @@
   padding: 0.5rem;
   padding-left: 2rem;
   padding-right: 2rem;
+}
+
+@media all and (max-width: 800px) {
+  .forms-container {
+    width: 70%;
+  }
 }
