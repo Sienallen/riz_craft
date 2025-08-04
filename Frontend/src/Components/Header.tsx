@@ -4,13 +4,37 @@ import './Header.css';
 import { Link, NavLink } from 'react-router-dom';
 import { IoClose } from 'react-icons/io5';
 import DropDownProfile from './Dropdown/DropDownProfile';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import isAuthenticated from './Accounts/isAuthenticated';
 
 const Header = () => {
   const [dropDown, setDropDown] = useState<boolean>(false);
+  const [isChecked, setIsChecked] = useState<boolean>(false);
 
   const openDropDown = () => {
     setDropDown(!dropDown);
+  };
+
+  const [isAuth, setIsAuth] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      const result = await isAuthenticated();
+      setIsAuth(result);
+    };
+    checkAuth();
+  }, [isChecked]);
+
+  const signInOrOut = () => {
+    if (isAuth === false) {
+      return <Link to="/login">Sign In</Link>;
+    } else {
+      return <Link to="/logout">Sign Out</Link>;
+    }
+  };
+
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setIsChecked(event.target.checked); // Update state with the new checked status
   };
 
   return (
@@ -24,7 +48,12 @@ const Header = () => {
       </div>
 
       <nav>
-        <input type="checkbox" id="sidebar-active" />
+        <input
+          type="checkbox"
+          id="sidebar-active"
+          checked={isChecked}
+          onChange={handleCheckboxChange}
+        />
         <label htmlFor="sidebar-active" id="overlay"></label>
         <div id="nav-links">
           <label htmlFor="sidebar-active" id="close-sidebar">
@@ -55,9 +84,18 @@ const Header = () => {
                 Contacts
               </NavLink>
             </li>
+            <li id="sign-in-out-header">{signInOrOut()}</li>
           </ul>
 
           <div className="icons">
+            <div id="profile-dropdown">
+              <div onClick={openDropDown}>
+                <CgProfile className="icon-button profile" />
+              </div>
+
+              <DropDownProfile setDropDown={setDropDown} dropDown={dropDown} />
+            </div>
+
             <Link to={'favPage'}>
               <svg
                 className="icon-button"
@@ -87,13 +125,6 @@ const Header = () => {
                 />
               </svg>
             </Link>
-            <div id="profile-dropdown">
-              <div onClick={openDropDown}>
-                <CgProfile className="icon-button profile" />
-              </div>
-
-              <DropDownProfile setDropDown={setDropDown} dropDown={dropDown} />
-            </div>
           </div>
         </div>
       </nav>

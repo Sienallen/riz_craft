@@ -90,6 +90,10 @@ header {
   position: relative;
 }
 
+#sign-in-out-header {
+  display: none;
+}
+
 #hamburger {
   height: 2.2rem;
   width: 2.2rem;
@@ -217,5 +221,14 @@ header {
     top: 0;
     left: 0;
     z-index: 5;
+  }
+
+  #profile-dropdown {
+    position: relative;
+    display: none;
+  }
+
+  #sign-in-out-header {
+    display: flex;
   }
 }
