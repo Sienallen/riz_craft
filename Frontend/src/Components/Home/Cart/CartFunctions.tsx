@@ -30,7 +30,7 @@ export const UpdateLocalCart = (
   //when item is not in cart, add the item to the localCart
   else {
     console.log('json cart is null ');
-    localCart.push({ product: itemData, quantity: 1, id: '1' });
+    localCart.push({ product: itemData, quantity: 1, id: `${itemData.name}` });
   }
 
   //set the key 'localCart' have value of localCart (array of Products)

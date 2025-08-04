@@ -20,7 +20,7 @@ header {
   font-size: 2rem;
 }
 
-#nav-links {
+.nav-links {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -33,29 +33,29 @@ header {
   z-index: 10;
 }
 
-#nav-links h3 {
+.nav-links h3 {
   white-space: nowrap;
   font-size: 2rem;
 }
 
-#nav-links ul {
+.nav-links ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-#nav-links ul li {
+.nav-links ul li {
   list-style-type: none;
 }
 
-#nav-links ul li a {
+.nav-links ul li a {
   text-decoration: none;
   color: #ff5fa2;
   font-weight: 500;
   padding: 1rem;
 }
 
-#nav-links ul li a:hover {
+.nav-links ul li a:hover {
   background-color: #fcc89b;
   border-radius: 2rem;
 }
@@ -75,7 +75,7 @@ header {
   border-radius: 2rem;
 }
 
-#nav-links .icons {
+.nav-links .icons {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -121,7 +121,6 @@ header {
     justify-content: center;
     padding: 0.5rem;
     position: fixed;
-    /*     background-color: white; */
     width: 100%;
     z-index: 4;
   }
@@ -142,7 +141,7 @@ header {
     justify-self: end;
   }
 
-  #nav-links {
+  .nav-links {
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
@@ -158,30 +157,30 @@ header {
     transition: 0.5s ease-out;
   }
 
-  #nav-links h3 {
+  .nav-links h3 {
     display: none;
   }
 
-  #nav-links ul {
+  .nav-links ul {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
   }
 
-  #nav-links ul li {
+  .nav-links ul li {
     display: flex;
     width: 100%;
   }
 
-  #nav-links ul li a {
+  .nav-links ul li a {
     display: flex;
     color: white;
     width: 100%;
     padding: 1.25rem;
   }
 
-  #nav-links ul li a:hover {
+  .nav-links ul li a:hover {
     background-color: #fcc89b;
     border-radius: 0;
   }
@@ -191,7 +190,7 @@ header {
     border-radius: 0;
   }
 
-  #nav-links .icons {
+  .nav-links .icons {
     justify-content: flex-start;
     padding-left: 1.25rem;
     gap: 1rem;
@@ -207,12 +206,12 @@ header {
     color: white;
   }
 
-  #sidebar-active:checked ~ #nav-links {
+  .nav-links-open {
     display: flex;
     right: 0;
   }
 
-  #sidebar-active:checked ~ #overlay {
+  #overlay {
     background-color: rgb(255, 95, 162, 0.2);
     backdrop-filter: blur(0.5rem);
     height: 100%;
@@ -221,6 +220,7 @@ header {
     top: 0;
     left: 0;
     z-index: 5;
+    transition: 0.5s;
   }
 
   #profile-dropdown {

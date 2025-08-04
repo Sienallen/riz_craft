@@ -45,12 +45,12 @@ const LocalCart = () => {
             <p>Total</p>
           </div>
 
-          {localCart.map((item) => (
+          {localCart.map((item, index) => (
             <CartCard
               product={item.product}
               quantity={item.quantity}
               id={item.id}
-              key={item.id}
+              key={index}
               UpdateCart={UpdateLocalCart}
               getCart={getCart}
             />

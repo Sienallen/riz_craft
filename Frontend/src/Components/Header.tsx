@@ -1,7 +1,7 @@
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { CgProfile } from 'react-icons/cg';
 import './Header.css';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { IoClose } from 'react-icons/io5';
 import DropDownProfile from './Dropdown/DropDownProfile';
 import { useEffect, useState } from 'react';
@@ -9,7 +9,8 @@ import isAuthenticated from './Accounts/isAuthenticated';
 
 const Header = () => {
   const [dropDown, setDropDown] = useState<boolean>(false);
-  const [isChecked, setIsChecked] = useState<boolean>(false);
+  const [isSideBar, setIsSideBar] = useState<boolean>(false);
+  const location = useLocation();
 
   const openDropDown = () => {
     setDropDown(!dropDown);
@@ -23,7 +24,16 @@ const Header = () => {
       setIsAuth(result);
     };
     checkAuth();
-  }, [isChecked]);
+  }, [isSideBar]);
+
+  useEffect(() => {
+    if (isSideBar) {
+      const timer = setTimeout(() => {
+        setIsSideBar(false);
+      }, 250);
+      return () => clearTimeout(timer);
+    }
+  }, [location]);
 
   const signInOrOut = () => {
     if (isAuth === false) {
@@ -33,32 +43,37 @@ const Header = () => {
     }
   };
 
-  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setIsChecked(event.target.checked); // Update state with the new checked status
-  };
-
   return (
     <header>
       <div className="media-header">
         <h2 id="site-title">Riz's Craft</h2>
 
-        <label htmlFor="sidebar-active" id="open-sidebar">
+        <div
+          id="open-sidebar"
+          onClick={() => {
+            setIsSideBar(true);
+          }}
+        >
           <RxHamburgerMenu id="hamburger" />
-        </label>
+        </div>
       </div>
 
       <nav>
-        <input
-          type="checkbox"
-          id="sidebar-active"
-          checked={isChecked}
-          onChange={handleCheckboxChange}
-        />
-        <label htmlFor="sidebar-active" id="overlay"></label>
-        <div id="nav-links">
-          <label htmlFor="sidebar-active" id="close-sidebar">
+        <div
+          id={isSideBar ? 'overlay' : ''}
+          onClick={() => {
+            setIsSideBar(false);
+          }}
+        ></div>
+        <div className={isSideBar ? 'nav-links nav-links-open' : 'nav-links'}>
+          <div
+            id="close-sidebar"
+            onClick={() => {
+              setIsSideBar(false);
+            }}
+          >
             <IoClose id="close" />
-          </label>
+          </div>
 
           <Link to="/" id="header-title">
             Riz's Crafts
