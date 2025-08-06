@@ -29,9 +29,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 SECRET_KEY = 'django-insecure-5m1y7#5snxhnr_4t(e*xg0k1f(1k1*lqhg&!!8i^0b8fi^#=%!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["https://riz-craft.vercel.app/", "http://localhost:5173/",]
+ALLOWED_HOSTS = ["localhost",'riz-craft.onrender.com']
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
