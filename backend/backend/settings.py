@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-5m1y7#5snxhnr_4t(e*xg0k1f(1k1*lqhg&!!8i^0b8fi^#=%!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["https://riz-craft.vercel.app/", "http://localhost:5173/",]
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
@@ -151,5 +151,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "https://riz-craft.vercel.app/",
 ]
 CORS_ALLOW_CREDENTIALS = True
