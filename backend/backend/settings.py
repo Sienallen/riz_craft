@@ -152,6 +152,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    "https://riz-craft.vercel.app/",
+    "https://riz-craft.vercel.app",
 ]
 CORS_ALLOW_CREDENTIALS = True
