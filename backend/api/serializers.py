@@ -31,7 +31,6 @@ class ProductSerializer(serializers.ModelSerializer):
         self.supabase = create_client(settings.SUPABASE_URL, settings.SUPABASE_KEY)
 
     def get_img(self, obj):
-        print(f"get_img called with path: {obj.img}")
         if not obj.img:
             return None
 
