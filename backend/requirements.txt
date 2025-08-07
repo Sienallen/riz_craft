@@ -12,3 +12,4 @@ Pillow
 gunicorn
 whitenoise
 dj-database-url
+supabase

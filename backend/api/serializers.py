@@ -1,6 +1,9 @@
+from django.conf import settings
 from django.contrib.auth.models import User
 from rest_framework import serializers
+from supabase import create_client
 from .models import Cart, Product, Fav
+
 
 #Serializer for the User
 class UserSerializer(serializers.ModelSerializer):
@@ -13,12 +16,27 @@ class UserSerializer(serializers.ModelSerializer):
         user = User.objects.create_user(**validated_data)
         return user
 
+
 #Serializer for the Products in the shop page
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = '__all__'
         #fields = ["name", "img", "price", "rating", "description", "path", "created_at"]
+
+    def get_img(self, obj):
+        if not obj.img:
+            return None
+
+        supabase = create_client(settings.SUPABASE_URL, settings.SUPABASE_KEY)
+        bucket = settings.SUPABASE_BUCKET
+
+        try:
+        # Generate a signed URL valid for 1 hour (3600 seconds)
+            result = supabase.storage.from_(bucket).create_signed_url(obj.img, 3600)
+            return result.get("signedURL")
+        except Exception:
+            return None
 
 #Serializers for the  User's Products in the cart
 class UserCartSerializer(serializers.ModelSerializer):
@@ -29,6 +47,7 @@ class UserCartSerializer(serializers.ModelSerializer):
         model = Cart
         fields = '__all__'
         extra_kwargs = {"user": {"read_only": True}}
+
 
 class UserFavSerializer(serializers.ModelSerializer):
     product = ProductSerializer(read_only=True)
