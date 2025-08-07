@@ -34,6 +34,9 @@ class ProductListView(generics.ListCreateAPIView):
 
     def create(self, request, *args, **kwargs):
         file = request.FILES.get('img')
+        print('*********\n\n\n')
+        print(file)
+        print('\n\n\n*********')
         if not file:
             return Response({"error": "Image file is required"}, status = status.HTTP_400_BAD_REQUEST)
 
