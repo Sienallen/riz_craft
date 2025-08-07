@@ -31,11 +31,12 @@ class ProductSerializer(serializers.ModelSerializer):
         self.supabase = create_client(settings.SUPABASE_URL, settings.SUPABASE_KEY)
 
     def get_img(self, obj):
+        print(f"get_img called with path: {obj.img}")
         if not obj.img:
             return None
 
         try:
-        # Generate a signed URL valid for 1 hour (3600 seconds)
+            # Generate a signed URL valid for 1 hour (3600 seconds)
             result = self.supabase.storage.from_(settings.SUPABASE_BUCKET).create_signed_url(obj.img, expires_in=3600)
             return result.get("signedURL")
         except Exception as e:
