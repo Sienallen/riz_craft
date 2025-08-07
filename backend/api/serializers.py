@@ -19,21 +19,24 @@ class UserSerializer(serializers.ModelSerializer):
 
 #Serializer for the Products in the shop page
 class ProductSerializer(serializers.ModelSerializer):
+    img = serializers.SerializerMethodField()
+
     class Meta:
         model = Product
         fields = '__all__'
         #fields = ["name", "img", "price", "rating", "description", "path", "created_at"]
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.supabase = create_client(settings.SUPABASE_URL, settings.SUPABASE_KEY)
+
     def get_img(self, obj):
         if not obj.img:
             return None
 
-        supabase = create_client(settings.SUPABASE_URL, settings.SUPABASE_KEY)
-        bucket = settings.SUPABASE_BUCKET
-
         try:
         # Generate a signed URL valid for 1 hour (3600 seconds)
-            result = supabase.storage.from_(bucket).create_signed_url(obj.img, 3600)
+            result = self.supabase.storage.from_(settings.SUPABASE_BUCKET).create_signed_url(obj.img, expires_in=3600)
             return result.get("signedURL")
         except Exception:
             return None
