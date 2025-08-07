@@ -38,7 +38,8 @@ class ProductSerializer(serializers.ModelSerializer):
         # Generate a signed URL valid for 1 hour (3600 seconds)
             result = self.supabase.storage.from_(settings.SUPABASE_BUCKET).create_signed_url(obj.img, expires_in=3600)
             return result.get("signedURL")
-        except Exception:
+        except Exception as e:
+            print(f"Signed URL generation error: {e}")
             return None
 
 #Serializers for the  User's Products in the cart

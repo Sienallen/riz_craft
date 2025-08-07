@@ -45,7 +45,7 @@ class ProductListView(generics.ListCreateAPIView):
             supabase = create_client(settings.SUPABASE_URL, settings.SUPABASE_KEY)
 
             # Upload to Supabase private Storage
-            reponse = supabase.storage.from_(bucket_name).upload(file_path, file_data, file.content_type)
+            reponse = supabase.storage.from_(bucket_name).upload(file_path, file_data, file.content_type, upsert=True)
 
              # Store file_path in DB
             data = request.data.copy()
@@ -55,7 +55,9 @@ class ProductListView(generics.ListCreateAPIView):
             serializer.is_valid(raise_exception=True)
             self.perform_create(serializer)
 
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            new_serializer = self.get_serializer(serializer.instance)
+
+            return Response(new_serializer.data, status=status.HTTP_201_CREATED)
 
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
