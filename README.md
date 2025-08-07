@@ -41,6 +41,13 @@ Built with **React (TypeScript)** and **Django**, this project helped me strengt
 - Django REST Framework
 - SQLite
 
+### Deployment
+
+- Vercel -> Frontend
+- Render -> Backend
+- Neon -> Postgress Database
+- Supabase -> Media Storage
+
 ## 🚀 Future Improvements (optional)
 
 -Payment integration
