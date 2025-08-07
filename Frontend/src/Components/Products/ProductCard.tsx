@@ -13,6 +13,7 @@ interface prop {
 }
 
 const ProductCard = ({ product }: prop) => {
+  console.log(product.img);
   return (
     <>
       <div className="product-card">
